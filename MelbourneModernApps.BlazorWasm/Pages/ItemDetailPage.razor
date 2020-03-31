@@ -1,0 +1,29 @@
+﻿@page "/presenters/new"
+@inject NavigationManager NavigationManager
+
+<h1>New Presenter</h1>
+
+<EditForm Model="@VM" OnSubmit="Submit">
+   
+
+    <InputText id="name" @bind-Value="@VM.Name" />
+    <InputText id="description" @bind-Value="@VM.Description" />
+    <InputText id="name" @bind-Value="@VM.ImageUrl" />
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+@code
+{
+    private ItemDetailViewModel VM = new ItemDetailViewModel();
+
+    public async Task Submit()
+    {
+        var saved = await VM.Save();
+        if(saved)
+        {
+            //navigate
+            NavigationManager.NavigateTo("/fetchdata");
+        }
+    }
+}
