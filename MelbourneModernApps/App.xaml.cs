@@ -1,8 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using MelbourneModernApps.Services;
 using MelbourneModernApps.Views;
+using MelbourneModernApp.Core.Services;
 
 namespace MelbourneModernApps
 {

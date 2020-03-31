@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using MelbourneModernApp.Core.Models;
+using MelbourneModernApp.Core.Services;
 
-using Xamarin.Forms;
-
-using MelbourneModernApps.Models;
-using MelbourneModernApps.Services;
-
-namespace MelbourneModernApps.ViewModels
+namespace MelbourneModernApp.Core.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<Item> DataStore = new MockDataStore();
 
         bool isBusy = false;
         public bool IsBusy

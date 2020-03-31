@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     x:Class="MelbourneModernApps.Views.AboutPage"
-    xmlns:vm="clr-namespace:MelbourneModernApps.ViewModels"
+    xmlns:vm="clr-namespace:MelbourneModernApp.Core.ViewModels;assembly=MelbourneModernApp.Core"
     Title="{Binding Title}">
     <ContentPage.BindingContext>
         <vm:AboutViewModel />

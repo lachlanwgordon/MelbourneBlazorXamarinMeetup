@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using MelbourneModernApps.Models;
 using MelbourneModernApps.Views;
-using MelbourneModernApps.ViewModels;
+using MelbourneModernApp.Core.Models;
+using MelbourneModernApp.Core.ViewModels;
 
 namespace MelbourneModernApps.Views
 {

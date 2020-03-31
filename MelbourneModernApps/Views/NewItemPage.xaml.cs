@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using MelbourneModernApp.Core.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using MelbourneModernApps.Models;
 
 namespace MelbourneModernApps.Views
 {
@@ -21,7 +21,7 @@ namespace MelbourneModernApps.Views
 
             Item = new Item
             {
-                Text = "Item name",
+                Name = "Item name",
                 Description = "This is an item description."
             };
 

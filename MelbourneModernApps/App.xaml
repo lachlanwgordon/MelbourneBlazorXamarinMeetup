@@ -7,5 +7,8 @@
     mc:Ignorable="d"
     x:Class="MelbourneModernApps.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PageBackground">#F5F4F9</Color>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
