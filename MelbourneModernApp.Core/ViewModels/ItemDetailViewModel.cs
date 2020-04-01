@@ -12,25 +12,79 @@ namespace MelbourneModernApp.Core.ViewModels
         public string Description { get; set; }
         public string ImageUrl { get; set; }
 
-        public ItemDetailViewModel(Item item = null)
+        string validationMessage;
+        public string ValidationMessage
         {
-            if(item != null)
+            get => validationMessage;
+            set
             {
-                Title = item.Name;
-                Item = item;
-                Name = item.Name;
-                Description = item.Description;
-                ImageUrl = item.ImageUrl;
+                SetProperty(ref validationMessage, value);
             }
-            else
-            {
-                Title = "New Presenter";
-            }
+        }
+
+        public ItemDetailViewModel(Item item)
+        {
+            Title = item.Name;
+            Item = item;
+            Name = item.Name;
+            Description = item.Description;
+            ImageUrl = item.ImageUrl;
+        }
+
+        public ItemDetailViewModel()
+        {
+           Title = "New Presenter";
         }
 
         public async Task<bool> Save()
         {
-            return true;
+            var valid = true;
+            if(string.IsNullOrWhiteSpace(Name))
+            {
+                ValidationMessage = "Please enter a name";
+                valid = false;
+                return valid;
+            }
+            if (string.IsNullOrWhiteSpace(Description))
+            {
+                ValidationMessage = "Please enter a description";
+                valid = false;
+                return valid;
+            }
+            if (string.IsNullOrWhiteSpace(ImageUrl))
+            {
+                ValidationMessage = "Please enter an image url";
+                valid = false;
+                return valid;
+            }
+            bool success = false;
+
+            if (valid)
+            {
+                if(Item == null)
+                {
+                    Item = new Item
+                    {
+                        Name = Name,
+                        Description = Description,
+                        ImageUrl = ImageUrl
+                    };
+                    success = await DataStore.AddItemAsync(Item);
+                    if (!success)
+                        ValidationMessage = "Failed to add new item";
+                }
+                else
+                {
+                    Item.Name = Name;
+                    Item.Description = Description;
+                    Item.ImageUrl = ImageUrl;
+                    success = await DataStore.UpdateItemAsync(Item);
+                    if (!success)
+                        ValidationMessage = "Failed to update item";
+                }
+            }
+
+            return valid && success;
         }
     }
 }

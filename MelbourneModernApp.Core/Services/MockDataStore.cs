@@ -8,11 +8,18 @@ namespace MelbourneModernApp.Core.Services
 {
     public class MockDataStore : IDataStore<Item>
     {
-        readonly List<Item> items;
+        static readonly List<Item> items = new List<Item>();
 
         public MockDataStore()
         {
-            items = new List<Item>()
+            SeedData();
+        }
+
+        private void SeedData()
+        {
+            if (items.Any())
+                return;
+            var newitems = new List<Item>()
             {
                 new Item { Id = Guid.NewGuid().ToString(), Name = "Kym Phillpots", Description="This is an item description.", ImageUrl="https://pbs.twimg.com/profile_images/866159039180189696/mZc3rn30_400x400.jpg" },
                 new Item { Id = Guid.NewGuid().ToString(), Name = "Rod Hemphill", Description="This is an item description.", ImageUrl="https://pbs.twimg.com/profile_images/871482427557855232/DowYSDdP_400x400.jpg" },
@@ -21,6 +28,7 @@ namespace MelbourneModernApp.Core.Services
                 new Item { Id = Guid.NewGuid().ToString(), Name = "Ryan Davis", Description="This is an item description." },
                 new Item { Id = Guid.NewGuid().ToString(), Name = "Matthew Robbins", Description="This is an item description." }
             };
+            items.AddRange(newitems);
         }
 
         public async Task<bool> AddItemAsync(Item item)

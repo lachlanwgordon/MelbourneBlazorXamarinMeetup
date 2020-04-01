@@ -3,12 +3,23 @@
 
 <h1>New Presenter</h1>
 
-<EditForm Model="@VM" OnSubmit="Submit">
-   
+<p>@VM.ValidationMessage</p>
 
-    <InputText id="name" @bind-Value="@VM.Name" />
-    <InputText id="description" @bind-Value="@VM.Description" />
-    <InputText id="name" @bind-Value="@VM.ImageUrl" />
+<EditForm Model="@VM" OnSubmit="Submit">
+
+    <div>
+        <p>Name</p>
+        <InputText id="name" @bind-Value="@VM.Name" />
+    </div>
+    <div>
+        <p>Description</p>
+        <InputText id="description" @bind-Value="@VM.Description" />
+    </div>
+
+    <div>
+        <p>Image Url</p>
+        <InputText id="name" @bind-Value="@VM.ImageUrl" />
+    </div>
 
     <button type="submit">Submit</button>
 </EditForm>

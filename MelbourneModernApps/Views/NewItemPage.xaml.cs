@@ -25,13 +25,13 @@ namespace MelbourneModernApps.Views
                 Description = "This is an item description."
             };
 
-            BindingContext = this;
         }
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddItem", Item);
-            await Navigation.PopModalAsync();
+            var success = await VM.Save();
+            if(success)
+                await Navigation.PopModalAsync();
         }
 
         async void Cancel_Clicked(object sender, EventArgs e)
