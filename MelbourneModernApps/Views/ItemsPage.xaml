@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage
+    BackgroundColor="{StaticResource PageBackground}"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -17,42 +18,70 @@
         IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
         Command="{Binding LoadItemsCommand}">
         <CollectionView
+            Margin="10"
             x:Name="ItemsCollectionView"
             ItemsSource="{Binding Items}">
-            <d:CollectionView.ItemsSource>
-                <x:Array
-                    Type="{x:Type x:String}">
-                    <x:String>First Item</x:String>
-                    <x:String>Second Item</x:String>
-                    <x:String>Third Item</x:String>
-                    <x:String>Fourth Item</x:String>
-                    <x:String>Fifth Item</x:String>
-                    <x:String>Sixth Item</x:String>
-                </x:Array>
-            </d:CollectionView.ItemsSource>
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"  ItemSpacing="20" />
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout
+                    <Frame
+                        Visual="Material"
                         Padding="10">
-                        <Label
-                            Text="{Binding Text}"
-                            d:Text="{Binding .}"
-                            LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemTextStyle}"
-                            FontSize="16" />
-                        <Label
-                            Text="{Binding Description}"
-                            d:Text="Item descripton"
-                            LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="13" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer
-                                NumberOfTapsRequired="1"
-                                Tapped="OnItemSelected">
-                            </TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
+                        <Grid
+                            Padding="0"
+                            Margin="0"
+                            >
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="Auto" />
+                                <RowDefinition
+                                    Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="Auto" />
+                                <ColumnDefinition
+                                    Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Frame
+                                Visual="Material"
+                                Padding="0"
+                                Margin="0"
+                                VerticalOptions="Start"
+                                Grid.RowSpan="2"
+                                WidthRequest="100"
+                                HeightRequest="100"
+                                CornerRadius="50">
+                                <Image
+                                    Source="{Binding ImageUrl}"
+                                     />
+                            </Frame>
+
+                            <Label
+                                Grid.Column="1"
+                                Text="{Binding Name}"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemTextStyle}"
+                                FontSize="16" />
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                Text="{Binding Description}"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    NumberOfTapsRequired="1"
+                                    Tapped="OnItemSelected">
+                                </TapGestureRecognizer>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

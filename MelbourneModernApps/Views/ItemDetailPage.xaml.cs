@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
+using MelbourneModernApp.Core.Models;
+using MelbourneModernApp.Core.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using MelbourneModernApps.Models;
-using MelbourneModernApps.ViewModels;
 
 namespace MelbourneModernApps.Views
 {
@@ -28,7 +28,7 @@ namespace MelbourneModernApps.Views
 
             var item = new Item
             {
-                Text = "Item 1",
+                Name = "Item 1",
                 Description = "This is an item description."
             };
 

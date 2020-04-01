@@ -1,0 +1,47 @@
+﻿@page "/fetchdata"
+@inject NavigationManager NavigationManager
+
+<h1>Presenters</h1>
+
+<p>Presenters and Melbourne Meetup.</p>
+
+@if (VM.Items == null || VM.Items.Count == 0)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <button @onclick="AddPresenter">Add Presenter</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Picture</th>
+                <th>Name</th>
+                <th>Blurb</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var presenter in VM.Items)
+            {
+                <tr>
+                    <td><img src="@presenter.ImageUrl" class="circle-image" /></td>
+                    <td>@presenter.Name</td>
+                    <td>@presenter.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private ItemsViewModel VM = new ItemsViewModel();
+    protected override async Task OnInitializedAsync()
+    {
+        await VM.ExecuteLoadItemsCommand();
+    }
+
+    public void AddPresenter()
+    {
+        NavigationManager.NavigateTo("/presenters/new");
+    }
+}

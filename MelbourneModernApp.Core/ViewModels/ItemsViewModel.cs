@@ -2,13 +2,10 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using MelbourneModernApp.Core.Models;
+using MvvmHelpers.Commands;
 
-using Xamarin.Forms;
-
-using MelbourneModernApps.Models;
-using MelbourneModernApps.Views;
-
-namespace MelbourneModernApps.ViewModels
+namespace MelbourneModernApp.Core.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
@@ -20,16 +17,9 @@ namespace MelbourneModernApps.ViewModels
             Title = "Browse";
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
-
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
-            {
-                var newItem = item as Item;
-                Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
-            });
         }
 
-        async Task ExecuteLoadItemsCommand()
+        public async Task ExecuteLoadItemsCommand()
         {
             IsBusy = true;
 

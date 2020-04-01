@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MelbourneModernApps.Services
+namespace MelbourneModernApp.Core.Services
 {
     public interface IDataStore<T>
     {

@@ -1,12 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage
+<ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:MelbourneModernApp.Core.ViewModels;assembly=MelbourneModernApp.Core"
     mc:Ignorable="d"
+    BackgroundColor="{StaticResource PageBackground}"
     x:Class="MelbourneModernApps.Views.NewItemPage"
     Title="New Item">
+    <ContentPage.BindingContext>
+        <vm:ItemDetailViewModel x:Name="VM"/>
+    </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
         <ToolbarItem
             Text="Cancel"
@@ -19,21 +24,28 @@
         <StackLayout
             Spacing="20"
             Padding="15">
+            <Label Text="{Binding ValidationMessage}"/>
             <Label
                 Text="Text"
                 FontSize="Medium" />
             <Entry
-                Text="{Binding Item.Text}"
+                Text="{Binding Name}"
                 d:Text="Item name"
                 FontSize="Small" />
             <Label
                 Text="Description"
                 FontSize="Medium" />
             <Editor
-                Text="{Binding Item.Description}"
-                d:Text="Item description"
+                Text="{Binding Description}"
+                HeightRequest="200"
                 FontSize="Small"
                 Margin="0" />
+            <Label
+                Text="Image Url"
+                FontSize="Medium" />
+            <Entry
+                Text="{Binding ImageUrl}"
+                FontSize="Small" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
