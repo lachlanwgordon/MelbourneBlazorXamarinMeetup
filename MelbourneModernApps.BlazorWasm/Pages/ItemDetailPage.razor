@@ -7,21 +7,24 @@
 
 <EditForm Model="@VM" OnSubmit="Submit">
 
-    <div>
-        <p>Name</p>
-        <InputText id="name" @bind-Value="@VM.Name" />
+    <div class="center">
+        <MatTextField @bind-Value="@VM.Name" Label="Name"></MatTextField>
     </div>
-    <div>
-        <p>Description</p>
-        <InputText id="description" @bind-Value="@VM.Description" />
+    <div class="center">
+        <MatTextField Label="Description" id="description" @bind-Value="@VM.Description" />
     </div>
 
-    <div>
-        <p>Image Url</p>
-        <InputText id="name" @bind-Value="@VM.ImageUrl" />
+    <div class="center">
+        <MatTextField id="name" Label="Image Url" @bind-Value="@VM.ImageUrl" />
+    </div>
+    <div class="center">
+
+        <img src="@VM.ImageUrl" class="circle-image" />
     </div>
 
-    <button type="submit">Submit</button>
+    <div class="center">
+        <MatButton Raised="true" type="submit">Save</MatButton>
+    </div>
 </EditForm>
 
 @code
