@@ -1,4 +1,5 @@
-﻿@page "/presenters/new"
+﻿@page "/presenters/detail"
+@page "/presenters/detail/{Id}"
 @inject NavigationManager NavigationManager
 
 <h1>New Presenter</h1>
@@ -31,13 +32,23 @@
 {
     private ItemDetailViewModel VM = new ItemDetailViewModel();
 
+    [Parameter]
+    public string Id { get; set; }
+
     public async Task Submit()
     {
         var saved = await VM.Save();
-        if(saved)
+        if (saved)
         {
             //navigate
             NavigationManager.NavigateTo("/fetchdata");
         }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await VM.LoadPresenter(Id);
+        StateHasChanged();
     }
 }

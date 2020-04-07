@@ -24,16 +24,28 @@ namespace MelbourneModernApp.Core.ViewModels
 
         public ItemDetailViewModel(Item item)
         {
-            Title = item.Name;
-            Item = item;
-            Name = item.Name;
-            Description = item.Description;
-            ImageUrl = item.ImageUrl;
+            PopulateDetails(item);
         }
 
         public ItemDetailViewModel()
         {
            Title = "New Presenter";
+        }
+
+        public async Task LoadPresenter(string id)
+        {
+            var presenter = await DataStore.GetItemAsync(id);
+            Item = presenter;
+            PopulateDetails(presenter);
+        }
+
+        public void PopulateDetails(Item item)
+        {
+            Title = item.Name;
+            Item = item;
+            Name = item.Name;
+            Description = item.Description;
+            ImageUrl = item.ImageUrl;
         }
 
         public async Task<bool> Save()

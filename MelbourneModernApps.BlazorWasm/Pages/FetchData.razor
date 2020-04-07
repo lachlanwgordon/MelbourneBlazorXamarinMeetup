@@ -1,6 +1,8 @@
 ﻿@page "/fetchdata"
 @inject NavigationManager NavigationManager
 
+@using MelbourneModernApp.Core.Models
+
 <h1>Presenters</h1>
 
 <p>Presenters and Melbourne Meetup.</p>
@@ -11,8 +13,7 @@
 }
 else
 {
-    <button @onclick="AddPresenter">Add Presenter</button>
-    <MatButton Raised="true" OnClick="AddPresenter">Save</MatButton>
+    <MatButton Raised="true" OnClick="AddPresenter">Add</MatButton>
 
     <table class="table">
         <thead>
@@ -20,6 +21,7 @@ else
                 <th>Picture</th>
                 <th>Name</th>
                 <th>Blurb</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +31,7 @@ else
                     <td><img src="@presenter.ImageUrl" class="circle-image" /></td>
                     <td>@presenter.Name</td>
                     <td>@presenter.Description</td>
+                    <td><MatIconButton Icon="edit" OnClick="@(() => EditPresenter(presenter))" ></MatIconButton></td>
                 </tr>
             }
         </tbody>
@@ -44,6 +47,12 @@ else
 
     public void AddPresenter()
     {
-        NavigationManager.NavigateTo("/presenters/new");
+        NavigationManager.NavigateTo("/presenters/detail");
+    }
+
+    public void EditPresenter(Item presenter)
+    {
+
+        NavigationManager.NavigateTo($"/presenters/detail/{presenter.Id}");
     }
 }
