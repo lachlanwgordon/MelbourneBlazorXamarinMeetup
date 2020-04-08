@@ -1,4 +1,5 @@
-﻿@page "/presenters/new"
+﻿@page "/presenters/detail"
+@page "/presenters/detail/{Id}"
 @inject NavigationManager NavigationManager
 
 <h1>New Presenter</h1>
@@ -7,34 +8,58 @@
 
 <EditForm Model="@VM" OnSubmit="Submit">
 
-    <div>
-        <p>Name</p>
-        <InputText id="name" @bind-Value="@VM.Name" />
+    <div class="center">
+        <MatTextField @bind-Value="@VM.Name" FullWidth="true"  Label="Name"></MatTextField>
     </div>
-    <div>
-        <p>Description</p>
-        <InputText id="description" @bind-Value="@VM.Description" />
+    <div class="center">
+        <MatTextField Label="Description" FullWidth="true" id="description" @bind-Value="@VM.Description" />
     </div>
 
-    <div>
-        <p>Image Url</p>
-        <InputText id="name" @bind-Value="@VM.ImageUrl" />
+    <div class="center">
+        <MatTextField id="name" FullWidth="true" Label="Image Url" @bind-Value="@VM.ImageUrl" />
+    </div>
+    <div class="center">
+        <MatTextField id="name" FullWidth="true" Label="Github" @bind-Value="@VM.GithubUrl" />
+    </div>
+    <div class="center">
+        <MatTextField id="name" FullWidth="true" Label="Twitter" @bind-Value="@VM.TwitterHandle" />
+    </div>
+    <div class="center">
+        <MatTextField id="name" FullWidth="true" Label="Youtube" @bind-Value="@VM.YoutubeUrl" />
+    </div>
+    <div class="center">
+        <MatTextField id="name" FullWidth="true" Label="Blog" @bind-Value="@VM.BlogUrl" />
+    </div>
+    <div class="center">
+        <img src="@VM.ImageUrl"  class="circle-image" />
     </div>
 
-    <button type="submit">Submit</button>
+    <div class="center">
+        <MatButton Raised="true" type="submit">Save</MatButton>
+    </div>
 </EditForm>
 
 @code
 {
     private ItemDetailViewModel VM = new ItemDetailViewModel();
 
+    [Parameter]
+    public string Id { get; set; }
+
     public async Task Submit()
     {
         var saved = await VM.Save();
-        if(saved)
+        if (saved)
         {
             //navigate
             NavigationManager.NavigateTo("/fetchdata");
         }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await VM.LoadPresenter(Id);
+        StateHasChanged();
     }
 }

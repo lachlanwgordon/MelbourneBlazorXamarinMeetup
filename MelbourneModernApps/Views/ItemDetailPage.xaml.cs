@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using MelbourneModernApp.Core.Models;
-using MelbourneModernApp.Core.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,29 +11,39 @@ namespace MelbourneModernApps.Views
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class ItemDetailPage : ContentPage
+    public partial class PresenterDetailPage : ContentPage
     {
-        ItemDetailViewModel viewModel;
-
-        public ItemDetailPage(ItemDetailViewModel viewModel)
+        public PresenterDetailPage()
         {
             InitializeComponent();
-
-            BindingContext = this.viewModel = viewModel;
         }
 
-        public ItemDetailPage()
+        Presenter Item;
+
+        public PresenterDetailPage(Presenter item)
         {
             InitializeComponent();
+            Item = item;
+        }
 
-            var item = new Item
-            {
-                Name = "Item 1",
-                Description = "This is an item description."
-            };
+        async void Save_Clicked(object sender, EventArgs e)
+        {
+            var success = await VM.Save();
+            if(success)
+                await Navigation.PopAsync();
+        }
 
-            viewModel = new ItemDetailViewModel(item);
-            BindingContext = viewModel;
+        async void Cancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            if(Item != null)
+                await VM.LoadPresenter(Item.Id);
+            
         }
     }
 }

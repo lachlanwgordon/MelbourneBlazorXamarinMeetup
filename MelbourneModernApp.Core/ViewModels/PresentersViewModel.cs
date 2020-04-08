@@ -3,19 +3,19 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using MelbourneModernApp.Core.Models;
+using MvvmHelpers;
 using MvvmHelpers.Commands;
 
 namespace MelbourneModernApp.Core.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableRangeCollection<Presenter> Items { get; set; } = new ObservableRangeCollection<Presenter>();
         public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
@@ -25,12 +25,12 @@ namespace MelbourneModernApp.Core.ViewModels
 
             try
             {
+                await Task.Delay(500);//These are needed or the list is blank, investigate further and/or report bug
                 Items.Clear();
                 var items = await DataStore.GetItemsAsync(true);
-                foreach (var item in items)
-                {
-                    Items.Add(item);
-                }
+                await Task.Delay(500);
+
+                Items.AddRange(items);
             }
             catch (Exception ex)
             {

@@ -5,24 +5,77 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    x:Class="MelbourneModernApps.Views.ItemDetailPage"
+    Visual="Material"
+    Padding="0"
+    xmlns:vm="clr-namespace:MelbourneModernApp.Core.ViewModels;assembly=MelbourneModernApp.Core"
+    x:Class="MelbourneModernApps.Views.PresenterDetailPage"
     Title="{Binding Title}">
-    <StackLayout
-        Spacing="20"
-        Padding="15">
-        <Label
-            Text="Text:"
-            FontSize="Medium" />
-        <Label
-            Text="{Binding Item.Text}"
-            d:Text="Item name"
-            FontSize="Small" />
-        <Label
-            Text="Description:"
-            FontSize="Medium" />
-        <Label
-            Text="{Binding Item.Description}"
-            d:Text="Item description"
-            FontSize="Small" />
-    </StackLayout>
+    <ContentPage.BindingContext>
+        <vm:ItemDetailViewModel
+            x:Name="VM" />
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Save"
+            Clicked="Save_Clicked">
+
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <StackLayout
+            Spacing="20"
+            Padding="15">
+            <Label
+                IsVisible="{Binding Converter={StaticResource nullStringToVisibleConverter}, Path=ValidationMessage}"
+                Text="{Binding ValidationMessage}" />
+            
+            <Entry
+                Placeholder="Name"
+                Text="{Binding Name}"
+                d:Text="Item name"
+                FontSize="Small" />
+            
+            <Editor
+                Placeholder="Description"
+                Text="{Binding Description}"
+                 AutoSize="TextChanges"
+                FontSize="Small"
+                Margin="0" />
+        
+            <Entry
+                Placeholder="Image Url"
+                Text="{Binding ImageUrl}"
+                FontSize="Small" />
+            <Entry
+                Placeholder="Github Url"
+                
+                Text="{Binding GithubUrl}"
+                FontSize="Small" />
+            <Entry
+                Placeholder="Twitter"
+                Text="{Binding TwitterHandle}"
+                FontSize="Small" />
+             <Entry
+                Placeholder="Youtube"
+                Text="{Binding YoutubeUrl}"
+                FontSize="Small" />
+             <Entry
+                Placeholder="Blog"
+                Text="{Binding BlogUrl}"
+                FontSize="Small" />
+            <Frame
+                Visual="Material"
+                Padding="0"
+                Margin="0"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                WidthRequest="200"
+                HeightRequest="200"
+                CornerRadius="100">
+                <Image
+                    Source="{Binding ImageUrl}" />
+            </Frame>
+        </StackLayout>
+
+    </ScrollView>
 </ContentPage>

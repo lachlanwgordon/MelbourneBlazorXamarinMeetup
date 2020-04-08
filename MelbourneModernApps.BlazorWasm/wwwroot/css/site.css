@@ -123,6 +123,13 @@ app {
     color: red;
 }
 
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 15px;
+}
+
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;
