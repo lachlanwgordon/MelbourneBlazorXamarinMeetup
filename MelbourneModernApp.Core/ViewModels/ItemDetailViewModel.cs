@@ -8,9 +8,34 @@ namespace MelbourneModernApp.Core.ViewModels
     {
         public Item Item { get; set; }
 
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string ImageUrl { get; set; }
+        string name; 
+        public string Name
+        {
+            get => name;
+            set
+            {
+                SetProperty(ref name, value);
+            }
+        }
+        string description;
+        public string Description
+        {
+            get => description;
+            set
+            {
+                SetProperty(ref description, value);
+            }
+        }
+
+        string imageUrl;
+        public string ImageUrl
+        {
+            get => imageUrl;
+            set
+            {
+                SetProperty(ref imageUrl, value);
+            }
+        }
 
         string validationMessage;
         public string ValidationMessage
@@ -20,11 +45,6 @@ namespace MelbourneModernApp.Core.ViewModels
             {
                 SetProperty(ref validationMessage, value);
             }
-        }
-
-        public ItemDetailViewModel(Item item)
-        {
-            PopulateDetails(item);
         }
 
         public ItemDetailViewModel()

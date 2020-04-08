@@ -62,7 +62,8 @@ namespace MelbourneModernApp.Core.Services
 
         public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
         {
-            return await Task.FromResult(items);
+            var sortedItems = items.OrderBy(x => x.Name);
+            return await Task.FromResult(sortedItems);
         }
     }
 }

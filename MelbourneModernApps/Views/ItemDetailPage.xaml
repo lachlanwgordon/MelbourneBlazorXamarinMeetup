@@ -5,24 +5,57 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    Visual="Material"
+    xmlns:vm="clr-namespace:MelbourneModernApp.Core.ViewModels;assembly=MelbourneModernApp.Core"
     x:Class="MelbourneModernApps.Views.ItemDetailPage"
     Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:ItemDetailViewModel
+            x:Name="VM" />
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="Save_Clicked" >
+
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <StackLayout
         Spacing="20"
         Padding="15">
         <Label
-            Text="Text:"
-            FontSize="Medium" />
+            Text="{Binding ValidationMessage}" />
         <Label
-            Text="{Binding Item.Text}"
+            Text="Text"
+            FontSize="Medium" />
+        <Entry
+            Text="{Binding Name}"
             d:Text="Item name"
             FontSize="Small" />
         <Label
-            Text="Description:"
+            Text="Description"
             FontSize="Medium" />
+        <Editor
+            Text="{Binding Description}"
+            HeightRequest="200"
+            FontSize="Small"
+            Margin="0" />
         <Label
-            Text="{Binding Item.Description}"
-            d:Text="Item description"
+            Text="Image Url"
+            FontSize="Medium" />
+        <Entry
+            Text="{Binding ImageUrl}"
             FontSize="Small" />
+        <Frame
+            Visual="Material"
+            Padding="0"
+            Margin="0"
+            VerticalOptions="Start"
+            HorizontalOptions="Center"
+            WidthRequest="200"
+            HeightRequest="200"
+            CornerRadius="100">
+            <Image
+                Source="{Binding ImageUrl}" />
+        </Frame>
     </StackLayout>
+
 </ContentPage>

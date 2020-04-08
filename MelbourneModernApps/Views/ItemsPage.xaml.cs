@@ -23,7 +23,6 @@ namespace MelbourneModernApps.Views
         public ItemsPage()
         {
             InitializeComponent();
-
             BindingContext = viewModel = new ItemsViewModel();
         }
 
@@ -31,20 +30,22 @@ namespace MelbourneModernApps.Views
         {
             var layout = (BindableObject)sender;
             var item = (Item)layout.BindingContext;
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Shell.Current.Navigation.PushAsync(new ItemDetailPage(item));
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+            await Shell.Current.Navigation.PushAsync(new NavigationPage(new ItemDetailPage()));
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
-                viewModel.IsBusy = true;
+            //viewModel.LoadItemsCommand.Execute(null);
+
+            //if (viewModel.Items.Count == 0)
+            viewModel.IsBusy = true;
         }
     }
 }
