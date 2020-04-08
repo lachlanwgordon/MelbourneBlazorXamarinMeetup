@@ -8,7 +8,7 @@ namespace MelbourneModernApp.Core.ViewModels
     {
         public Presenter Item { get; set; }
 
-        string name; 
+        string name;
         public string Name
         {
             get => name;
@@ -47,9 +47,51 @@ namespace MelbourneModernApp.Core.ViewModels
             }
         }
 
+        string twitterHandle;
+        public string TwitterHandle
+        {
+            get => twitterHandle;
+            set
+            {
+                SetProperty(ref twitterHandle, value);
+            }
+        }
+
+        string githubUrl;
+        public string GithubUrl
+        {
+            get => githubUrl;
+            set
+            {
+                SetProperty(ref githubUrl, value);
+            }
+        }
+
+        string blogUrl;
+        public string BlogUrl
+        {
+            get => blogUrl;
+            set
+            {
+                SetProperty(ref blogUrl, value);
+            }
+        }
+
+        string youtubeUrl;
+        public string YoutubeUrl
+        {
+            get => youtubeUrl;
+            set
+            {
+                SetProperty(ref youtubeUrl, value);
+            }
+        }
+
+
+
         public ItemDetailViewModel()
         {
-           Title = "New Presenter";
+            Title = "New Presenter";
         }
 
         public async Task LoadPresenter(string id)
@@ -66,12 +108,16 @@ namespace MelbourneModernApp.Core.ViewModels
             Name = item.Name;
             Description = item.Description;
             ImageUrl = item.ImageUrl;
+            TwitterHandle = item.TwitterHandle;
+            GithubUrl = item.GithubUrl;
+            BlogUrl = item.BlogUrl;
+            YoutubeUrl = item.YoutubeUrl;
         }
 
         public async Task<bool> Save()
         {
             var valid = true;
-            if(string.IsNullOrWhiteSpace(Name))
+            if (string.IsNullOrWhiteSpace(Name))
             {
                 ValidationMessage = "Please enter a name";
                 valid = false;
@@ -93,13 +139,16 @@ namespace MelbourneModernApp.Core.ViewModels
 
             if (valid)
             {
-                if(Item == null)
+                if (Item == null)
                 {
                     Item = new Presenter
                     {
                         Name = Name,
                         Description = Description,
-                        ImageUrl = ImageUrl
+                        ImageUrl = ImageUrl,
+                        TwitterHandle = TwitterHandle,
+                        GithubUrl = GithubUrl,
+                        BlogUrl = BlogUrl,
                     };
                     success = await DataStore.AddItemAsync(Item);
                     if (!success)
@@ -110,6 +159,12 @@ namespace MelbourneModernApp.Core.ViewModels
                     Item.Name = Name;
                     Item.Description = Description;
                     Item.ImageUrl = ImageUrl;
+                    Item.TwitterHandle = TwitterHandle;
+                    Item.GithubUrl = GithubUrl;
+                    Item.BlogUrl = BlogUrl;
+                    Item.YoutubeUrl = YoutubeUrl;
+
+
                     success = await DataStore.UpdateItemAsync(Item);
                     if (!success)
                         ValidationMessage = "Failed to update item";

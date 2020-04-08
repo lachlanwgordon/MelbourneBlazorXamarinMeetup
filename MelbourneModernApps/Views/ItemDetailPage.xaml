@@ -28,27 +28,40 @@
             <Label
                 IsVisible="{Binding Converter={StaticResource nullStringToVisibleConverter}, Path=ValidationMessage}"
                 Text="{Binding ValidationMessage}" />
-            <Label
-                Text="Text"
-                FontSize="Medium" />
+            
             <Entry
+                Placeholder="Name"
                 Text="{Binding Name}"
                 d:Text="Item name"
                 FontSize="Small" />
-            <Label
-                Text="Description"
-                FontSize="Medium" />
+            
             <Editor
+                Placeholder="Description"
                 Text="{Binding Description}"
                  AutoSize="TextChanges"
                 FontSize="Small"
                 Margin="0" />
-            <Label
-                Text="Image Url"
-                FontSize="Medium" />
+        
             <Entry
-                
+                Placeholder="Image Url"
                 Text="{Binding ImageUrl}"
+                FontSize="Small" />
+            <Entry
+                Placeholder="Github Url"
+                
+                Text="{Binding GithubUrl}"
+                FontSize="Small" />
+            <Entry
+                Placeholder="Twitter"
+                Text="{Binding TwitterHandle}"
+                FontSize="Small" />
+             <Entry
+                Placeholder="Youtube"
+                Text="{Binding YoutubeUrl}"
+                FontSize="Small" />
+             <Entry
+                Placeholder="Blog"
+                Text="{Binding BlogUrl}"
                 FontSize="Small" />
             <Frame
                 Visual="Material"

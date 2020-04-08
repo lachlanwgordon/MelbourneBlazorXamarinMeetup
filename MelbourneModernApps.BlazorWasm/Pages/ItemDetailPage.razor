@@ -9,18 +9,29 @@
 <EditForm Model="@VM" OnSubmit="Submit">
 
     <div class="center">
-        <MatTextField @bind-Value="@VM.Name" Label="Name"></MatTextField>
+        <MatTextField @bind-Value="@VM.Name" FullWidth="true"  Label="Name"></MatTextField>
     </div>
     <div class="center">
-        <MatTextField Label="Description" id="description" @bind-Value="@VM.Description" />
+        <MatTextField Label="Description" FullWidth="true" id="description" @bind-Value="@VM.Description" />
     </div>
 
     <div class="center">
-        <MatTextField id="name" Label="Image Url" @bind-Value="@VM.ImageUrl" />
+        <MatTextField id="name" FullWidth="true" Label="Image Url" @bind-Value="@VM.ImageUrl" />
     </div>
     <div class="center">
-
-        <img src="@VM.ImageUrl" class="circle-image" />
+        <MatTextField id="name" FullWidth="true" Label="Github" @bind-Value="@VM.GithubUrl" />
+    </div>
+    <div class="center">
+        <MatTextField id="name" FullWidth="true" Label="Twitter" @bind-Value="@VM.TwitterHandle" />
+    </div>
+    <div class="center">
+        <MatTextField id="name" FullWidth="true" Label="Youtube" @bind-Value="@VM.YoutubeUrl" />
+    </div>
+    <div class="center">
+        <MatTextField id="name" FullWidth="true" Label="Blog" @bind-Value="@VM.BlogUrl" />
+    </div>
+    <div class="center">
+        <img src="@VM.ImageUrl"  class="circle-image" />
     </div>
 
     <div class="center">

@@ -21,7 +21,7 @@ namespace MelbourneModernApp.Core.Services
                 return;
             var newitems = new List<Presenter>()
             {
-                new Presenter { Id = Guid.NewGuid().ToString(), Name = "Kym Phillpots", Description="This is an item description.", ImageUrl="https://pbs.twimg.com/profile_images/866159039180189696/mZc3rn30_400x400.jpg" },
+                new Presenter { Id = Guid.NewGuid().ToString(), Name = "Kym Phillpots", Description="This is an item description.", ImageUrl="https://pbs.twimg.com/profile_images/866159039180189696/mZc3rn30_400x400.jpg", GithubUrl = "https://github.com/kphillpotts", YoutubeUrl ="https://www.youtube.com/user/kphillpotts", BlogUrl = "https://kymphillpotts.com/", TwitterHandle="@kphillpots" },
                 new Presenter { Id = Guid.NewGuid().ToString(), Name = "Rod Hemphill", Description="This is an item description.", ImageUrl="https://pbs.twimg.com/profile_images/871482427557855232/DowYSDdP_400x400.jpg" },
                 new Presenter { Id = Guid.NewGuid().ToString(), Name = "Lachlan Gordon", Description="This is an item description." },
                 new Presenter { Id = Guid.NewGuid().ToString(), Name = "Michael Whitehead", Description="This is an item description." },

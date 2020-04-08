@@ -38,6 +38,8 @@
                                     Height="Auto" />
                                 <RowDefinition
                                     Height="*" />
+                                <RowDefinition
+                                    Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition
@@ -45,13 +47,12 @@
                                 <ColumnDefinition
                                     Width="*" />
                             </Grid.ColumnDefinitions>
-
                             <Frame
                                 Visual="Material"
                                 Padding="0"
                                 Margin="0"
                                 VerticalOptions="Start"
-                                Grid.RowSpan="2"
+                                Grid.RowSpan="3"
                                 WidthRequest="100"
                                 HeightRequest="100"
                                 CornerRadius="50">
@@ -73,6 +74,15 @@
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
+
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{Binding TwitterHandle}"
+                                />
+
+
+
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer
                                     NumberOfTapsRequired="1"
