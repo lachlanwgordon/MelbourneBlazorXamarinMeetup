@@ -5,9 +5,10 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    x:Class="MelbourneModernApps.App">
+    x:Class="MelbourneModernApps.App" xmlns:converters="clr-namespace:MelbourneModernApps.Converters">
     <Application.Resources>
         <ResourceDictionary>
+            <converters:NullStringToVisibleConverter x:Key="nullStringToVisibleConverter"/>
             <Color x:Key="PageBackground">#F5F4F9</Color>
             <Style TargetType="ContentPage">
                 <Setter Property="BackgroundColor" Value="{StaticResource PageBackground}"/>

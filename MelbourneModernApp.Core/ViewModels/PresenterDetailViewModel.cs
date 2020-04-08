@@ -6,7 +6,7 @@ namespace MelbourneModernApp.Core.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Item Item { get; set; }
+        public Presenter Item { get; set; }
 
         string name; 
         public string Name
@@ -59,7 +59,7 @@ namespace MelbourneModernApp.Core.ViewModels
             PopulateDetails(presenter);
         }
 
-        public void PopulateDetails(Item item)
+        public void PopulateDetails(Presenter item)
         {
             Title = item.Name;
             Item = item;
@@ -95,7 +95,7 @@ namespace MelbourneModernApp.Core.ViewModels
             {
                 if(Item == null)
                 {
-                    Item = new Item
+                    Item = new Presenter
                     {
                         Name = Name,
                         Description = Description,

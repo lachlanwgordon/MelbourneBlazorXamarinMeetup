@@ -1,4 +1,5 @@
-﻿@page "/fetchdata"
+﻿@page "/presenters"
+@page "/"
 @inject NavigationManager NavigationManager
 
 @using MelbourneModernApp.Core.Models
@@ -31,7 +32,7 @@ else
                     <td><img src="@presenter.ImageUrl" class="circle-image" /></td>
                     <td>@presenter.Name</td>
                     <td>@presenter.Description</td>
-                    <td><MatIconButton Icon="edit" OnClick="@(() => EditPresenter(presenter))" ></MatIconButton></td>
+                    <td><MatIconButton Icon="edit" OnClick="@(() => EditPresenter(presenter))"></MatIconButton></td>
                 </tr>
             }
         </tbody>

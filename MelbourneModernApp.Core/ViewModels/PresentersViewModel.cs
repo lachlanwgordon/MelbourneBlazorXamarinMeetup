@@ -10,7 +10,7 @@ namespace MelbourneModernApp.Core.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        public ObservableRangeCollection<Item> Items { get; set; } = new ObservableRangeCollection<Item>();
+        public ObservableRangeCollection<Presenter> Items { get; set; } = new ObservableRangeCollection<Presenter>();
         public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel()

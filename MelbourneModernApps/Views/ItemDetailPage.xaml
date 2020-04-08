@@ -6,56 +6,63 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Visual="Material"
+    Padding="0"
     xmlns:vm="clr-namespace:MelbourneModernApp.Core.ViewModels;assembly=MelbourneModernApp.Core"
-    x:Class="MelbourneModernApps.Views.ItemDetailPage"
+    x:Class="MelbourneModernApps.Views.PresenterDetailPage"
     Title="{Binding Title}">
     <ContentPage.BindingContext>
         <vm:ItemDetailViewModel
             x:Name="VM" />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" >
+        <ToolbarItem
+            Text="Save"
+            Clicked="Save_Clicked">
 
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-    <StackLayout
-        Spacing="20"
-        Padding="15">
-        <Label
-            Text="{Binding ValidationMessage}" />
-        <Label
-            Text="Text"
-            FontSize="Medium" />
-        <Entry
-            Text="{Binding Name}"
-            d:Text="Item name"
-            FontSize="Small" />
-        <Label
-            Text="Description"
-            FontSize="Medium" />
-        <Editor
-            Text="{Binding Description}"
-            HeightRequest="200"
-            FontSize="Small"
-            Margin="0" />
-        <Label
-            Text="Image Url"
-            FontSize="Medium" />
-        <Entry
-            Text="{Binding ImageUrl}"
-            FontSize="Small" />
-        <Frame
-            Visual="Material"
-            Padding="0"
-            Margin="0"
-            VerticalOptions="Start"
-            HorizontalOptions="Center"
-            WidthRequest="200"
-            HeightRequest="200"
-            CornerRadius="100">
-            <Image
-                Source="{Binding ImageUrl}" />
-        </Frame>
-    </StackLayout>
+    <ScrollView>
+        <StackLayout
+            Spacing="20"
+            Padding="15">
+            <Label
+                IsVisible="{Binding Converter={StaticResource nullStringToVisibleConverter}, Path=ValidationMessage}"
+                Text="{Binding ValidationMessage}" />
+            <Label
+                Text="Text"
+                FontSize="Medium" />
+            <Entry
+                Text="{Binding Name}"
+                d:Text="Item name"
+                FontSize="Small" />
+            <Label
+                Text="Description"
+                FontSize="Medium" />
+            <Editor
+                Text="{Binding Description}"
+                 AutoSize="TextChanges"
+                FontSize="Small"
+                Margin="0" />
+            <Label
+                Text="Image Url"
+                FontSize="Medium" />
+            <Entry
+                
+                Text="{Binding ImageUrl}"
+                FontSize="Small" />
+            <Frame
+                Visual="Material"
+                Padding="0"
+                Margin="0"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                WidthRequest="200"
+                HeightRequest="200"
+                CornerRadius="100">
+                <Image
+                    Source="{Binding ImageUrl}" />
+            </Frame>
+        </StackLayout>
 
+    </ScrollView>
 </ContentPage>

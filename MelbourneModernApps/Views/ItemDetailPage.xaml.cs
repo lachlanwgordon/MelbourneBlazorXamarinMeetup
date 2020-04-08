@@ -11,20 +11,19 @@ namespace MelbourneModernApps.Views
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class ItemDetailPage : ContentPage
+    public partial class PresenterDetailPage : ContentPage
     {
-        public ItemDetailPage()
+        public PresenterDetailPage()
         {
             InitializeComponent();
         }
 
-        Item Item;
+        Presenter Item;
 
-        public ItemDetailPage(Item item)
+        public PresenterDetailPage(Presenter item)
         {
             InitializeComponent();
             Item = item;
-
         }
 
         async void Save_Clicked(object sender, EventArgs e)
@@ -42,7 +41,8 @@ namespace MelbourneModernApps.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await VM.LoadPresenter(Item.Id);
+            if(Item != null)
+                await VM.LoadPresenter(Item.Id);
             
         }
     }

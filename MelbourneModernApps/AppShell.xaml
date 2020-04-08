@@ -57,7 +57,7 @@
             Title="Browse"
             Icon="tab_feed.png">
             <ShellContent
-                ContentTemplate="{DataTemplate local:ItemsPage}" />
+                ContentTemplate="{DataTemplate local:PresentersPage}" />
         </Tab>
         <Tab
             Title="About"

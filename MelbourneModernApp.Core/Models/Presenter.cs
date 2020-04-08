@@ -2,7 +2,7 @@
 
 namespace MelbourneModernApp.Core.Models
 {
-    public class Item
+    public class Presenter
     {
         public string Id { get; set; }
         public string Name { get; set; }
