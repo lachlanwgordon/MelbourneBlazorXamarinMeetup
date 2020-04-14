@@ -35,7 +35,7 @@ namespace MelbourneModernApps.Views
 
         async void AddItem_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.Navigation.PushAsync(new NavigationPage(new PresenterDetailPage()));
+            await Shell.Current.Navigation.PushAsync(new PresenterDetailPage());
         }
 
         protected override void OnAppearing()
