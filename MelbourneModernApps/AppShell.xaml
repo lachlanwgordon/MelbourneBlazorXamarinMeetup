@@ -54,11 +54,17 @@
     <!-- Your Pages -->
     <TabBar>
         <Tab
-            Title="Browse"
+            Title="Presenters"
             Icon="tab_feed.png">
             <ShellContent
                 ContentTemplate="{DataTemplate local:PresentersPage}" />
         </Tab>
+        <!--<Tab
+            Title="Presentations"
+            Icon="tab_feed.png">
+            <ShellContent
+                ContentTemplate="{DataTemplate local:PresentationsPage}" />
+        </Tab>-->
         <Tab
             Title="About"
             Icon="tab_about.png">

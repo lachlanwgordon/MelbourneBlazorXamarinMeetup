@@ -8,7 +8,8 @@
     mc:Ignorable="d"
     x:Class="MelbourneModernApps.Views.PresentersPage"
     Title="{Binding Title}"
-    x:Name="BrowseItemsPage">
+    x:Name="BrowseItemsPage"
+    xmlns:controls="clr-namespace:MelbourneModernApps.Controls">
     <ContentPage.ToolbarItems>
         <ToolbarItem
             Text="Add"
@@ -22,76 +23,22 @@
             x:Name="ItemsCollectionView"
             ItemsSource="{Binding Items}">
             <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical"  ItemSpacing="20" />
+                <LinearItemsLayout
+                    Orientation="Vertical"
+                    ItemSpacing="20" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame
-                        Visual="Material"
-                        Padding="10">
-                        <Grid
-                            Padding="0"
-                            Margin="0"
-                            >
-                            <Grid.RowDefinitions>
-                                <RowDefinition
-                                    Height="Auto" />
-                                <RowDefinition
-                                    Height="*" />
-                                <RowDefinition
-                                    Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition
-                                    Width="Auto" />
-                                <ColumnDefinition
-                                    Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Frame
-                                Visual="Material"
-                                Padding="0"
-                                Margin="0"
-                                VerticalOptions="Start"
-                                Grid.RowSpan="3"
-                                WidthRequest="100"
-                                HeightRequest="100"
-                                CornerRadius="50">
-                                <Image
-                                    Source="{Binding ImageUrl}"
-                                     />
-                            </Frame>
-
-                            <Label
-                                Grid.Column="1"
-                                Text="{Binding Name}"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemTextStyle}"
-                                FontSize="16" />
-                            <Label
-                                Grid.Column="1"
-                                Grid.Row="1"
-                                Text="{Binding Description}"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />
-
-                            <Label
-                                Grid.Row="2"
-                                Grid.Column="1"
-                                Text="{Binding TwitterHandle}"
-                                />
-
-
-
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    NumberOfTapsRequired="1"
-                                    Tapped="OnItemSelected">
-                                </TapGestureRecognizer>
-                            </Grid.GestureRecognizers>
-                        </Grid>
-
-                    </Frame>
+                    <Grid>
+                        <controls:CardLayout
+                            Clicked="OnItemSelected" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer
+                                NumberOfTapsRequired="1"
+                                Tapped="OnItemSelected">
+                            </TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

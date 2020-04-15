@@ -41,7 +41,6 @@ namespace MelbourneModernApps.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
             viewModel.IsBusy = true;
         }
     }

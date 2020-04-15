@@ -15,10 +15,10 @@
 else
 {
     <MatButton Raised="true" OnClick="AddPresenter">Add</MatButton>
-    <MatIconButton Icon="list" OnClick="@(() => IsCardView = !IsCardView)"></MatIconButton>
+    <MatIconButton Style="float: right;" Icon="list" OnClick="@(() => IsCardView = !IsCardView)"></MatIconButton>
+
     @if (IsCardView)
     {
-
         @foreach (var presenter in VM.Items)
         {
             <MatCard @onclick="@(() => EditPresenter(presenter))">
@@ -31,11 +31,8 @@ else
                                 <p>@presenter.TwitterHandle</p>
                                 <p>@presenter.GithubUrl</p>
                             </div>
-                            
                         </div>
-
                     </div>
-
                 </MatCardContent>
             </MatCard>
         }
@@ -49,7 +46,6 @@ else
                     <th>Name</th>
                     <th>Blurb</th>
                     <th>Twitter</th>
-
                     <th></th>
                 </tr>
             </thead>
