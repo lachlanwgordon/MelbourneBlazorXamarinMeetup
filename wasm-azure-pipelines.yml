@@ -27,6 +27,10 @@ steps:
     projects: 'MelbourneModernApps.BlazorWasm/MelbourneModernApps.BlazorWasm.csproj'
     arguments: '--configuration $(buildConfiguration) -o ./publish'
 
+- script: |
+    pwd
+    ls -R
+
 - task: AzureFileCopy@3
   inputs:
     SourcePath: 'publish/MelbourneModernApps.BlazorWasm/wwwroot'
