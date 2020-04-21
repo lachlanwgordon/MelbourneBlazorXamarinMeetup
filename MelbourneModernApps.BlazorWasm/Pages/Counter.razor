@@ -1,5 +1,6 @@
 ﻿@page "/counter"
 
+
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
@@ -9,8 +10,22 @@
 @code {
     private int currentCount = 0;
 
+    [Inject] HttpClient HttpClient { get; set; }
+
+    [Inject] IJSRuntime JSRuntime { get; set; }
+    public void LogToConsole()
+    {
+        JSRuntime.InvokeVoidAsync("console.log('hello JS')");
+    }
+
+
     private void IncrementCount()
     {
         currentCount++;
+
+
+        JSRuntime.InvokeVoidAsync("console.log('hello JS')");
+
+
     }
 }

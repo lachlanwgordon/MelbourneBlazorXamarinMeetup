@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    BackgroundColor="{StaticResource PageBackground}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="MelbourneModernApps.Views.PresentersPage"
+    Title="{Binding Title}"
+    x:Name="BrowseItemsPage"
+    xmlns:controls="clr-namespace:MelbourneModernApps.Controls">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Add"
+            Clicked="AddItem_Clicked" />
+    </ContentPage.ToolbarItems>
+    <RefreshView
+        IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+        Command="{Binding LoadItemsCommand}">
+        <CollectionView
+            Margin="10"
+            x:Name="ItemsCollectionView"
+            ItemsSource="{Binding Items}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout
+                    Orientation="Vertical"
+                    ItemSpacing="20" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <controls:CardLayout
+                            Clicked="OnItemSelected" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer
+                                NumberOfTapsRequired="1"
+                                Tapped="OnItemSelected">
+                            </TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

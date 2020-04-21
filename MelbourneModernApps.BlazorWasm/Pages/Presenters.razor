@@ -15,35 +15,59 @@
 else
 {
     <MatButton Raised="true" OnClick="AddPresenter">Add</MatButton>
+    <MatIconButton Style="float: right;" Icon="list" OnClick="@(() => IsCardView = !IsCardView)"></MatIconButton>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Picture</th>
-                <th>Name</th>
-                <th>Blurb</th>
-                <th>Twitter</th>
-
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var presenter in VM.Items)
-            {
-            <tr>
-                <td><img src="@presenter.ImageUrl" class="circle-image" /></td>
-                <td>@presenter.Name</td>
-                <td>@presenter.Description</td>
-                <td>@presenter.TwitterHandle</td>
-                <td><MatIconButton Icon="edit" OnClick="@(() => EditPresenter(presenter))"></MatIconButton></td>
-            </tr>
-            }
-        </tbody>
-    </table>
+    @if (IsCardView)
+    {
+        @foreach (var presenter in VM.Items)
+        {
+            <MatCard @onclick="@(() => EditPresenter(presenter))">
+                <MatCardContent>
+                    <div class="mat-layout-grid">
+                        <div class="mat-layout-grid-inner">
+                            <img Class="circle-image mat-layout-grid-cell-span-2" src="@presenter.ImageUrl" />
+                            <div class="circle-image mat-layout-grid-cell-span-9">
+                                <h3>@presenter.Name</h3>
+                                <p>@presenter.TwitterHandle</p>
+                                <p>@presenter.GithubUrl</p>
+                            </div>
+                        </div>
+                    </div>
+                </MatCardContent>
+            </MatCard>
+        }
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Picture</th>
+                    <th>Name</th>
+                    <th>Blurb</th>
+                    <th>Twitter</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var presenter in VM.Items)
+                {
+                    <tr>
+                        <td><img src="@presenter.ImageUrl" class="circle-image" /></td>
+                        <td>@presenter.Name</td>
+                        <td>@presenter.Description</td>
+                        <td>@presenter.TwitterHandle</td>
+                        <td><MatIconButton Icon="edit" OnClick="@(() => EditPresenter(presenter))"></MatIconButton></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
 }
 
 @code {
     private ItemsViewModel VM = new ItemsViewModel();
+    bool IsCardView = true;
     protected override async Task OnInitializedAsync()
     {
         await VM.ExecuteLoadItemsCommand();
@@ -56,7 +80,11 @@ else
 
     public void EditPresenter(Presenter presenter)
     {
-
         NavigationManager.NavigateTo($"/presenters/detail/{presenter.Id}");
+    }
+
+    public void OpenWebPage(string url)
+    {
+        //Open twitter in new tab
     }
 }

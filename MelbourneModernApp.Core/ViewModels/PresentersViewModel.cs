@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using MelbourneModernApp.Core.Models;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
@@ -11,13 +12,13 @@ namespace MelbourneModernApp.Core.ViewModels
     public class ItemsViewModel : BaseViewModel
     {
         public ObservableRangeCollection<Presenter> Items { get; set; } = new ObservableRangeCollection<Presenter>();
-        public Command LoadItemsCommand { get; set; }
+        public ICommand LoadItemsCommand => new AsyncCommand(ExecuteLoadItemsCommand);
 
         public ItemsViewModel()
         {
-            Title = "Browse";
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            Title = "Presenters";
         }
+
 
         public async Task ExecuteLoadItemsCommand()
         {

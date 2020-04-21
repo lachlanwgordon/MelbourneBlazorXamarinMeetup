@@ -31,7 +31,7 @@
         <MatTextField id="name" FullWidth="true" Label="Blog" @bind-Value="@VM.BlogUrl" />
     </div>
     <div class="center">
-        <img src="@VM.ImageUrl"  class="circle-image" />
+        <img src="@VM.ImageUrl" class="circle-image" />
     </div>
 
     <div class="center">
@@ -52,7 +52,7 @@
         if (saved)
         {
             //navigate
-            NavigationManager.NavigateTo("/fetchdata");
+            NavigationManager.NavigateTo("/presenters");
         }
     }
 
