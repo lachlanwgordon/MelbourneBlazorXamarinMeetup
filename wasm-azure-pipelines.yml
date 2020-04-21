@@ -1,0 +1,36 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+variables:
+  buildConfiguration: 'Release'
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: 'MelbourneModernApps.BlazorWasm/MelbourneModernApps.BlazorWasm.csproj'
+    arguments: '--configuration $(buildConfiguration) -o ./publish'
+
+- task: AzureFileCopy@4
+  inputs:
+    SourcePath: 'publish/MelbourneModernApps.BlazorWasm/wwwroot'
+    azureSubscription: 'Pay-As-You-Go(951a84dd-fbb0-4ba0-bc31-4865ee7f4df3)'
+    Destination: 'AzureBlob'
+    storage: 'melbournexamarinblazor'
+    ContainerName: '$web'
