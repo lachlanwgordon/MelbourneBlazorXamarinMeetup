@@ -23,9 +23,11 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'build'
+    command: 'publish'
+    publishWebProjects: false
     projects: 'MelbourneModernApps.BlazorWasm/MelbourneModernApps.BlazorWasm.csproj'
     arguments: '--configuration $(buildConfiguration) -o ./publish'
+    zipAfterPublish: false
 
 - script: |
     pwd
