@@ -28,7 +28,7 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: false
-    projects: 'MelbourneModernApps.Functions/MelbourneModernApps.Functions.csproj'
+    projects: 'MelbourneModenApps.Functions/MelbourneModenApps.Functions.csproj'
     arguments: '--configuration $(buildConfiguration)'
 - task: AzureFunctionApp@1
   inputs:
