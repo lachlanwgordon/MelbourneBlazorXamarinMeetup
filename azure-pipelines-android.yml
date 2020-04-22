@@ -33,3 +33,13 @@ steps:
     apksignerKeystorePassword: '$(keystorepassword)'
     apksignerKeystoreAlias: 'meetup'
     apksignerKeyPassword: '$(keystorepassword)'
+
+- task: AppCenterDistribute@3
+  inputs:
+    serverEndpoint: 'MeetupAppCenter'
+    appSlug: 'MelbourneXamarinBlazorMeetup/MelbourneMeetupAppDroid'
+    appFile: '$(outputDirectory)/*.apk'
+    symbolsOption: 'Android'
+    releaseNotesOption: 'input'
+    releaseNotesInput: 'Meetup app for android'
+    destinationType: 'groups'
