@@ -25,3 +25,11 @@ steps:
     projectFile: '**/*droid*.csproj'
     outputDirectory: '$(outputDirectory)'
     configuration: '$(buildConfiguration)'
+
+- task: AndroidSigning@3
+  inputs:
+    apkFiles: '**/*.apk'
+    apksignerKeystoreFile: 'meetup.keystore'
+    apksignerKeystorePassword: '$(keystorepassword)'
+    apksignerKeystoreAlias: 'meetup'
+    apksignerKeyPassword: '$(keystorepassword)'
