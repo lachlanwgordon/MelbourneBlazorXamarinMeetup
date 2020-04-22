@@ -4,7 +4,9 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/xamarin
 
 trigger:
-- master
+ branches:
+   include:
+   - release/ios*
 
 pool:
   vmImage: 'macos-latest'
