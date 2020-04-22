@@ -34,8 +34,8 @@ steps:
     provProfileSecureFile: 'MelbourneMeetupAdHoc.mobileprovision'
 - task: InstallAppleCertificate@2
   inputs:
-    certSecureFile: 'melbournemeetup.p12'
-    certPwd: '$(p12password)'
+    certSecureFile: 'meetup2.p12'
+    certPwd: '$(p12password2)'
     keychain: 'temp'
 - task: XamariniOS@2
   inputs:
