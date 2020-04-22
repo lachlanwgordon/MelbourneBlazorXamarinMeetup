@@ -9,7 +9,6 @@ namespace MelbourneModernApp.Core.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Presenter> DataStore = new MockDataStore();
 
         bool isBusy = false;
         public bool IsBusy

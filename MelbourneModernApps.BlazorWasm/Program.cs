@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using System.Text;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using MelbourneModernApp.Core.Services;
+using MelbourneModernApp.Core.Models;
 
 namespace MelbourneModernApps.BlazorWasm
 {
@@ -15,8 +17,12 @@ namespace MelbourneModernApps.BlazorWasm
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddBaseAddressHttpClient();
+            builder.Services.AddSingleton<IDataStore<Presenter>, MockDataStore>();
 
-            await builder.Build().RunAsync();
+            var host = builder.Build();
+            Container.Current.Services = host.Services;
+
+            await host.RunAsync();
         }
     }
 }

@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MelbourneModernApp.Core.Models;
+using MelbourneModernApp.Core.Services;
+using Microsoft.Extensions.DependencyInjection;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
 
@@ -14,9 +16,14 @@ namespace MelbourneModernApp.Core.ViewModels
         public ObservableRangeCollection<Presenter> Items { get; set; } = new ObservableRangeCollection<Presenter>();
         public ICommand LoadItemsCommand => new AsyncCommand(ExecuteLoadItemsCommand);
 
+        public IDataStore<Presenter> DataStore;
+
+
         public ItemsViewModel()
         {
             Title = "Presenters";
+            //DataStore = dataStore;
+            DataStore = Container.Current.Services.GetRequiredService<IDataStore<Presenter>>();
         }
 
 

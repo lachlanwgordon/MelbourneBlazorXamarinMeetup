@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MelbourneModernApp.Core.Models;
+using MelbourneModernApp.Core.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MelbourneModernApp.Core.ViewModels
 {
@@ -88,12 +90,15 @@ namespace MelbourneModernApp.Core.ViewModels
         }
 
 
+        public IDataStore<Presenter> DataStore;
 
         public ItemDetailViewModel()
         {
             Title = "New Presenter";
-        }
+            DataStore = Container.Current.Services.GetRequiredService<IDataStore<Presenter>>();
 
+        }
+        
         public async Task LoadPresenter(string id)
         {
             var presenter = await DataStore.GetItemAsync(id);

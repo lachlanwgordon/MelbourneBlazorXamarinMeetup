@@ -17,7 +17,4 @@
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Remove="Pages\PresenterDetailPage.razor" />
-  </ItemGroup>
 </Project>

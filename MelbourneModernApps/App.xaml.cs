@@ -3,6 +3,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MelbourneModernApps.Views;
 using MelbourneModernApp.Core.Services;
+using Microsoft.Extensions.DependencyInjection;
+using MelbourneModernApp.Core.Models;
 
 namespace MelbourneModernApps
 {
@@ -13,7 +15,16 @@ namespace MelbourneModernApps
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            var services = new ServiceCollection();
+
+            services.AddSingleton<IDataStore<Presenter>, MockDataStore>();
+
+            var serviceProvider = services.BuildServiceProvider(validateScopes: true);
+
+            var scope = serviceProvider.CreateScope();
+
+            Container.Current.Services = serviceProvider;
+
             MainPage = new AppShell();
         }
 
