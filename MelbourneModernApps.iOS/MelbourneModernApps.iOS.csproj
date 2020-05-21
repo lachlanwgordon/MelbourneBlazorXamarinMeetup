@@ -148,7 +148,7 @@
       <Name>MelbourneModernApps</Name>
     </ProjectReference>
     <ProjectReference Include="..\MelbourneModernApp.Core\MelbourneModernApp.Core.csproj">
-      <Project>{D9C3012C-CD64-4665-9923-53C427129C5B}</Project>
+      <Project>{DE403363-D501-4125-8161-881F8DD23D0C}</Project>
       <Name>MelbourneModernApp.Core</Name>
     </ProjectReference>
   </ItemGroup>

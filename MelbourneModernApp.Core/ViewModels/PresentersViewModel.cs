@@ -11,7 +11,7 @@ using MvvmHelpers.Commands;
 
 namespace MelbourneModernApp.Core.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class PresentersViewModel : BaseViewModel
     {
         public ObservableRangeCollection<Presenter> Items { get; set; } = new ObservableRangeCollection<Presenter>();
         public ICommand LoadItemsCommand => new AsyncCommand(ExecuteLoadItemsCommand);
@@ -19,13 +19,10 @@ namespace MelbourneModernApp.Core.ViewModels
         public IDataStore<Presenter> DataStore;
 
 
-        public ItemsViewModel()
+        public PresentersViewModel(IDataStore<Presenter> dataStore)
         {
-            Title = "Presenters";
-            //DataStore = dataStore;
-            DataStore = Container.Current.Services.GetRequiredService<IDataStore<Presenter>>();
+            DataStore = dataStore;
         }
-
 
         public async Task ExecuteLoadItemsCommand()
         {

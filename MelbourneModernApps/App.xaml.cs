@@ -5,6 +5,7 @@ using MelbourneModernApps.Views;
 using MelbourneModernApp.Core.Services;
 using Microsoft.Extensions.DependencyInjection;
 using MelbourneModernApp.Core.Models;
+using MelbourneModernApp.Core.ViewModels;
 
 namespace MelbourneModernApps
 {
@@ -17,7 +18,8 @@ namespace MelbourneModernApps
 
             var services = new ServiceCollection();
 
-            services.AddSingleton<IDataStore<Presenter>, MockDataStore>();
+            services.AddSingleton<IDataStore<Presenter>, PresenterDataStore>();
+            services.AddTransient<PresentersViewModel>();
 
             var serviceProvider = services.BuildServiceProvider(validateScopes: true);
 
