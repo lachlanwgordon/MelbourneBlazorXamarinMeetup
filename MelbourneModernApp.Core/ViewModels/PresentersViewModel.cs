@@ -33,7 +33,6 @@ namespace MelbourneModernApp.Core.ViewModels
                 await Task.Delay(500);//These are needed or the list is blank, investigate further and/or report bug
                 Items.Clear();
                 var items = await DataStore.GetItemsAsync(true);
-                await Task.Delay(500);
 
                 Items.AddRange(items);
             }
