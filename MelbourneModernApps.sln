@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelbourneModernApps.Android
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelbourneModernApps.iOS", "MelbourneModernApps.iOS\MelbourneModernApps.iOS.csproj", "{4FF78474-FBA2-4DA4-A574-9CD31855C7DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelbourneModernApps", "MelbourneModernApps\MelbourneModernApps.csproj", "{BFA51BBB-9E92-415C-9303-9751873DCBC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelbourneModernApps.Forms", "MelbourneModernApps\MelbourneModernApps.Forms.csproj", "{BFA51BBB-9E92-415C-9303-9751873DCBC1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelbourneModernApp.Core", "MelbourneModernApp.Core\MelbourneModernApp.Core.csproj", "{D9C3012C-CD64-4665-9923-53C427129C5B}"
 EndProject

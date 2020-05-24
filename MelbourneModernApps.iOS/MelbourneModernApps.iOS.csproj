@@ -143,13 +143,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\MelbourneModernApps\MelbourneModernApps.csproj">
-      <Project>{BFA51BBB-9E92-415C-9303-9751873DCBC1}</Project>
-      <Name>MelbourneModernApps</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MelbourneModernApp.Core\MelbourneModernApp.Core.csproj">
       <Project>{D9C3012C-CD64-4665-9923-53C427129C5B}</Project>
       <Name>MelbourneModernApp.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MelbourneModernApps\MelbourneModernApps.Forms.csproj">
+      <Project>{BFA51BBB-9E92-415C-9303-9751873DCBC1}</Project>
+      <Name>MelbourneModernApps.Forms</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

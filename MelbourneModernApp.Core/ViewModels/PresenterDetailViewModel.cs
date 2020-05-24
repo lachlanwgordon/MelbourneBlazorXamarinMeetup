@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace MelbourneModernApp.Core.ViewModels
 {
-    public class ItemDetailViewModel : BaseViewModel
+    public class PresenterDetailViewModel : BaseViewModel
     {
         public Presenter Item { get; set; }
 
@@ -90,13 +90,13 @@ namespace MelbourneModernApp.Core.ViewModels
         }
 
 
-        public IDataStore<Presenter> DataStore;
+        IDataStore<Presenter> DataStore;
+        INavigationService NavigationService;
 
-        public ItemDetailViewModel()
+        public PresenterDetailViewModel(IDataStore<Presenter> dataStore, INavigationService navigationService)
         {
-            Title = "New Presenter";
-            DataStore = Container.Current.Services.GetRequiredService<IDataStore<Presenter>>();
-
+            DataStore = dataStore;
+            NavigationService = navigationService;
         }
         
         public async Task LoadPresenter(string id)
@@ -119,26 +119,26 @@ namespace MelbourneModernApp.Core.ViewModels
             YoutubeUrl = item.YoutubeUrl;
         }
 
-        public async Task<bool> Save()
+        public async Task Save()
         {
             var valid = true;
             if (string.IsNullOrWhiteSpace(Name))
             {
                 ValidationMessage = "Please enter a name";
                 valid = false;
-                return valid;
+                return;
             }
             if (string.IsNullOrWhiteSpace(Description))
             {
                 ValidationMessage = "Please enter a description";
                 valid = false;
-                return valid;
+                return;
             }
             if (string.IsNullOrWhiteSpace(ImageUrl))
             {
                 ValidationMessage = "Please enter an image url";
                 valid = false;
-                return valid;
+                return;
             }
             bool success = false;
 
@@ -176,7 +176,9 @@ namespace MelbourneModernApp.Core.ViewModels
                 }
             }
 
-            return valid && success;
+            if (valid && success)
+                await NavigationService.NavigateToPageAsync("presenters");
+
         }
     }
 }

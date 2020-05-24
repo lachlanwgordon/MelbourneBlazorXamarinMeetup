@@ -13,18 +13,20 @@ namespace MelbourneModernApp.Core.ViewModels
 {
     public class PresentersViewModel : BaseViewModel
     {
+        IDataStore<Presenter> DataStore;
+        INavigationService NavigationService;
+
         public ObservableRangeCollection<Presenter> Items { get; set; } = new ObservableRangeCollection<Presenter>();
-        public ICommand LoadItemsCommand => new AsyncCommand(ExecuteLoadItemsCommand);
+        public ICommand LoadItemsCommand => new AsyncCommand(LoadItems);
+        public ICommand OpenPresenterCommand => new AsyncCommand<Presenter>(OpenPresenter);
 
-        public IDataStore<Presenter> DataStore;
-
-
-        public PresentersViewModel(IDataStore<Presenter> dataStore)
+        public PresentersViewModel(IDataStore<Presenter> dataStore, INavigationService navigationService)
         {
             DataStore = dataStore;
+            NavigationService = navigationService;
         }
 
-        public async Task ExecuteLoadItemsCommand()
+        public async Task LoadItems()
         {
             IsBusy = true;
 
@@ -33,7 +35,6 @@ namespace MelbourneModernApp.Core.ViewModels
                 await Task.Delay(500);//These are needed or the list is blank, investigate further and/or report bug
                 Items.Clear();
                 var items = await DataStore.GetItemsAsync(true);
-
                 Items.AddRange(items);
             }
             catch (Exception ex)
@@ -43,6 +44,18 @@ namespace MelbourneModernApp.Core.ViewModels
             finally
             {
                 IsBusy = false;
+            }
+        }
+
+        public async Task OpenPresenter(Presenter presenter = null)
+        {
+            if (presenter == null)
+            {
+                await NavigationService.NavigateToPageAsync($"presenters/detail");
+            }
+            else
+            {
+                await NavigationService.NavigateToPageAsync($"presenters/detail", "presenter", presenter.Id );
             }
         }
     }

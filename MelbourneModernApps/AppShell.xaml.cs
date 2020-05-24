@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using MelbourneModernApps.Views;
 using Xamarin.Forms;
 
 namespace MelbourneModernApps
@@ -10,6 +10,7 @@ namespace MelbourneModernApps
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute("presenters/detail", typeof(PresenterDetailPage));
         }
     }
 }

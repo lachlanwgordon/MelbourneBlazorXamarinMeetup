@@ -17,18 +17,6 @@ namespace MelbourneModernApps.Views
             BindingContext = VM = Container.Current.Services.GetRequiredService<PresentersViewModel>();
         }
 
-        async void OnItemSelected(object sender, EventArgs args)
-        {
-            var layout = (BindableObject)sender;
-            var item = (Presenter)layout.BindingContext;
-            await Shell.Current.Navigation.PushAsync(new PresenterDetailPage(item));
-        }
-
-        async void AddItem_Clicked(object sender, EventArgs e)
-        {
-            await Shell.Current.Navigation.PushAsync(new PresenterDetailPage());
-        }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();

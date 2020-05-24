@@ -19,22 +19,7 @@ namespace MelbourneModernApps.BlazorWasm.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            await VM.ExecuteLoadItemsCommand();
-        }
-
-        public void AddPresenter()
-        {
-            NavigationManager.NavigateTo("/presenters/detail");
-        }
-
-        public void EditPresenter(Presenter presenter)
-        {
-            NavigationManager.NavigateTo($"/presenters/detail/{presenter.Id}");
-        }
-
-        public void OpenWebPage(string url)
-        {
-            //Open twitter in new tab
+            await VM.LoadItems();
         }
     }
 }

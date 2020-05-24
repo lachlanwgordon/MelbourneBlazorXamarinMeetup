@@ -93,7 +93,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MelbourneModernApps\MelbourneModernApps.csproj">
       <Project>{BFA51BBB-9E92-415C-9303-9751873DCBC1}</Project>
-      <Name>MelbourneModernApps</Name>
+      <Name>MelbourneModernApps.Forms</Name>
     </ProjectReference>
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

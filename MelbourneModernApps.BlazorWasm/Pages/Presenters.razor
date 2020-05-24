@@ -13,7 +13,6 @@
 }
 else
 {
-
     <table class="table">
         <thead>
             <tr>
@@ -32,7 +31,7 @@ else
                     <td>@presenter.Name</td>
                     <td>@presenter.Description</td>
                     <td>@presenter.TwitterHandle</td>
-                    <td><MatIconButton Icon="edit" OnClick="@(() => EditPresenter(presenter))"></MatIconButton></td>
+                    <td><MatIconButton Icon="edit" OnClick="@(() => VM. OpenPresenter(presenter))"></MatIconButton></td>
                 </tr>
             }
         </tbody>
