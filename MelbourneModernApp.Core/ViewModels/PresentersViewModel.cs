@@ -30,21 +30,11 @@ namespace MelbourneModernApp.Core.ViewModels
         {
             IsBusy = true;
 
-            try
-            {
-                await Task.Delay(500);//These are needed or the list is blank, investigate further and/or report bug
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
-                Items.AddRange(items);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
-            finally
-            {
-                IsBusy = false;
-            }
+            Items.Clear();
+            var items = await DataStore.GetItemsAsync(true);
+            Items.AddRange(items);
+
+            IsBusy = false;
         }
 
         public async Task OpenPresenter(Presenter presenter = null)
@@ -55,7 +45,7 @@ namespace MelbourneModernApp.Core.ViewModels
             }
             else
             {
-                await NavigationService.NavigateToPageAsync($"presenters/detail", "presenter", presenter.Id );
+                await NavigationService.NavigateToPageAsync($"presenters/detail", "presenter", presenter.Id);
             }
         }
     }

@@ -34,7 +34,6 @@
                             Clicked="OnItemSelected" />
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer
-                                NumberOfTapsRequired="1"
                                 Command="{Binding BindingContext.OpenPresenterCommand, Source={x:Reference BrowseItemsPage}}"
                                 CommandParameter="{Binding .}">
                             </TapGestureRecognizer>
