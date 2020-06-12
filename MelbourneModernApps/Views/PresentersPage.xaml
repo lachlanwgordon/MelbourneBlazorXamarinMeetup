@@ -13,7 +13,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem
             Text="Add"
-            Clicked="AddItem_Clicked" />
+            Command="{Binding OpenPresenterCommand}" />
     </ContentPage.ToolbarItems>
     <RefreshView
         IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
@@ -34,8 +34,8 @@
                             Clicked="OnItemSelected" />
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer
-                                NumberOfTapsRequired="1"
-                                Tapped="OnItemSelected">
+                                Command="{Binding BindingContext.OpenPresenterCommand, Source={x:Reference BrowseItemsPage}}"
+                                CommandParameter="{Binding .}">
                             </TapGestureRecognizer>
                         </Grid.GestureRecognizers>
                     </Grid>

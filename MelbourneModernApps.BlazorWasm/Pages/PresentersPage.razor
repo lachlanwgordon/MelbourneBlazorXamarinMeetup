@@ -1,0 +1,40 @@
+﻿@page "/presenters"
+@page "/"
+
+@using MelbourneModernApp.Core.Models
+
+<h1>Presenters</h1>
+
+<p>Presenters and Melbourne Meetup.</p>
+
+@if (VM.Items == null || VM.Items.Count == 0)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Picture</th>
+                <th>Name</th>
+                <th>Blurb</th>
+                <th>Twitter</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var presenter in VM.Items)
+            {
+                <tr>
+                    <td><img src="@presenter.ImageUrl" class="circle-image" /></td>
+                    <td>@presenter.Name</td>
+                    <td>@presenter.Description</td>
+                    <td>@presenter.TwitterHandle</td>
+                    <td><MatIconButton Icon="edit" OnClick="@(() => VM. OpenPresenter(presenter))"></MatIconButton></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

@@ -11,42 +11,41 @@ using MvvmHelpers.Commands;
 
 namespace MelbourneModernApp.Core.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class PresentersViewModel : BaseViewModel
     {
+        IDataStore<Presenter> DataStore;
+        INavigationService NavigationService;
+
         public ObservableRangeCollection<Presenter> Items { get; set; } = new ObservableRangeCollection<Presenter>();
-        public ICommand LoadItemsCommand => new AsyncCommand(ExecuteLoadItemsCommand);
+        public ICommand LoadItemsCommand => new AsyncCommand(LoadItems);
+        public ICommand OpenPresenterCommand => new AsyncCommand<Presenter>(OpenPresenter);
 
-        public IDataStore<Presenter> DataStore;
-
-
-        public ItemsViewModel()
+        public PresentersViewModel(IDataStore<Presenter> dataStore, INavigationService navigationService)
         {
-            Title = "Presenters";
-            //DataStore = dataStore;
-            DataStore = Container.Current.Services.GetRequiredService<IDataStore<Presenter>>();
+            DataStore = dataStore;
+            NavigationService = navigationService;
         }
 
-
-        public async Task ExecuteLoadItemsCommand()
+        public async Task LoadItems()
         {
             IsBusy = true;
 
-            try
-            {
-                await Task.Delay(500);//These are needed or the list is blank, investigate further and/or report bug
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
-                await Task.Delay(500);
+            Items.Clear();
+            var items = await DataStore.GetItemsAsync(true);
+            Items.AddRange(items);
 
-                Items.AddRange(items);
-            }
-            catch (Exception ex)
+            IsBusy = false;
+        }
+
+        public async Task OpenPresenter(Presenter presenter = null)
+        {
+            if (presenter == null)
             {
-                Debug.WriteLine(ex);
+                await NavigationService.NavigateToPageAsync($"presenters/detail");
             }
-            finally
+            else
             {
-                IsBusy = false;
+                await NavigationService.NavigateToPageAsync($"presenters/detail", "presenter", presenter.Id);
             }
         }
     }

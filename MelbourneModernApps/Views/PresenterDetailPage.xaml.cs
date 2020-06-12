@@ -1,49 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using MelbourneModernApp.Core.Models;
+using MelbourneModernApp.Core.Services;
+using MelbourneModernApp.Core.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 
 namespace MelbourneModernApps.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [DesignTimeVisible(false)]
+    [QueryProperty(nameof(presenter), nameof(presenter))]
     public partial class PresenterDetailPage : ContentPage
     {
+        public string presenter { get; set; }
+        PresenterDetailViewModel VM;
         public PresenterDetailPage()
         {
             InitializeComponent();
-        }
-
-        Presenter Item;
-
-        public PresenterDetailPage(Presenter item)
-        {
-            InitializeComponent();
-            Item = item;
-        }
-
-        async void Save_Clicked(object sender, EventArgs e)
-        {
-            var success = await VM.Save();
-            if(success)
-                await Navigation.PopAsync();
-        }
-
-        async void Cancel_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
+            BindingContext = VM = Container.Current.Services.GetRequiredService<PresenterDetailViewModel>();
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            if(Item != null)
-                await VM.LoadPresenter(Item.Id);
-            
+            if(!string.IsNullOrEmpty(presenter))
+                await VM.LoadPresenter(presenter);
         }
     }
 }

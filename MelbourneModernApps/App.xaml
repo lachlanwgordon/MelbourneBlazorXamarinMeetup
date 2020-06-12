@@ -5,13 +5,61 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    x:Class="MelbourneModernApps.App" xmlns:converters="clr-namespace:MelbourneModernApps.Converters">
+    x:Class="MelbourneModernApps.App"
+    xmlns:converters="clr-namespace:MelbourneModernApps.Converters">
     <Application.Resources>
         <ResourceDictionary>
-            <converters:NullStringToVisibleConverter x:Key="nullStringToVisibleConverter"/>
-            <Color x:Key="PageBackground">#F5F4F9</Color>
-            <Style TargetType="ContentPage">
-                <Setter Property="BackgroundColor" Value="{StaticResource PageBackground}"/>
+            <Style
+                TargetType="Editor">
+                <Setter
+                    Property="AutoSize"
+                    Value="TextChanges" />
+                <Setter
+                    Property="FontSize"
+                    Value="Small" />
+            </Style>
+            <Style
+                TargetType="Entry">
+                <Setter
+                    Property="FontSize"
+                    Value="Small" />
+            </Style>
+            <converters:NullStringToVisibleConverter
+                x:Key="nullStringToVisibleConverter" />
+            <Color
+                x:Key="PageBackground">#F5F4F9</Color>
+            <Style
+                TargetType="ContentPage">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="{StaticResource PageBackground}" />
+            </Style>
+            <Style
+                TargetType="Frame">
+                <Setter
+                    Property="CornerRadius"
+                    Value="100" />
+                <Setter
+                    Property="Padding"
+                    Value="0" />
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Center" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Start" />
+                <Setter
+                    Property="Visual"
+                    Value="Material" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="200" />
+                <Setter
+                    Property="WidthRequest"
+                    Value="200" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

@@ -10,15 +10,11 @@
     xmlns:vm="clr-namespace:MelbourneModernApp.Core.ViewModels;assembly=MelbourneModernApp.Core"
     x:Class="MelbourneModernApps.Views.PresenterDetailPage"
     Title="{Binding Title}">
-    <ContentPage.BindingContext>
-        <vm:ItemDetailViewModel
-            x:Name="VM" />
-    </ContentPage.BindingContext>
+
     <ContentPage.ToolbarItems>
         <ToolbarItem
             Text="Save"
-            Clicked="Save_Clicked">
-
+            Command="{Binding SaveCommand}">
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ScrollView>
@@ -28,50 +24,35 @@
             <Label
                 IsVisible="{Binding Converter={StaticResource nullStringToVisibleConverter}, Path=ValidationMessage}"
                 Text="{Binding ValidationMessage}" />
-            
             <Entry
                 Placeholder="Name"
                 Text="{Binding Name}"
-                d:Text="Item name"
-                FontSize="Small" />
-            
+                d:Text="Item name" />
             <Editor
                 Placeholder="Description"
-                Text="{Binding Description}"
-                 AutoSize="TextChanges"
-                FontSize="Small"
-                Margin="0" />
-        
+                Text="{Binding Description}" />
+
             <Entry
                 Placeholder="Image Url"
                 Text="{Binding ImageUrl}"
                 FontSize="Small" />
             <Entry
                 Placeholder="Github Url"
-                
                 Text="{Binding GithubUrl}"
                 FontSize="Small" />
             <Entry
                 Placeholder="Twitter"
                 Text="{Binding TwitterHandle}"
                 FontSize="Small" />
-             <Entry
+            <Entry
                 Placeholder="Youtube"
                 Text="{Binding YoutubeUrl}"
                 FontSize="Small" />
-             <Entry
+            <Entry
                 Placeholder="Blog"
                 Text="{Binding BlogUrl}"
                 FontSize="Small" />
-            <Frame
-                Visual="Material"
-                Padding="0"
-                Margin="0"
-                VerticalOptions="Start"
-                HorizontalOptions="Center"
-                WidthRequest="200"
-                HeightRequest="200"
-                CornerRadius="100">
+            <Frame>
                 <Image
                     Source="{Binding ImageUrl}" />
             </Frame>

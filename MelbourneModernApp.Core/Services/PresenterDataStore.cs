@@ -6,11 +6,11 @@ using MelbourneModernApp.Core.Models;
 
 namespace MelbourneModernApp.Core.Services
 {
-    public class MockDataStore : IDataStore<Presenter>
+    public class PresenterDataStore : IDataStore<Presenter>
     {
         static readonly List<Presenter> items = new List<Presenter>();
 
-        public MockDataStore()
+        public PresenterDataStore()
         {
             SeedData();
         }

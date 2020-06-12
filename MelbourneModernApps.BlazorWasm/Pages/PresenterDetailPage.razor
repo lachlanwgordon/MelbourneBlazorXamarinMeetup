@@ -6,10 +6,10 @@
 
 <p>@VM.ValidationMessage</p>
 
-<EditForm Model="@VM" OnSubmit="Submit">
+<EditForm Model="@VM" OnSubmit="@VM.Save">
 
     <div class="center">
-        <MatTextField @bind-Value="@VM.Name" FullWidth="true"  Label="Name"></MatTextField>
+        <MatTextField @bind-Value="@VM.Name" FullWidth="true" Label="Name"></MatTextField>
     </div>
     <div class="center">
         <MatTextField Label="Description" FullWidth="true" id="description" @bind-Value="@VM.Description" />
@@ -38,28 +38,3 @@
         <MatButton Raised="true" type="submit">Save</MatButton>
     </div>
 </EditForm>
-
-@code
-{
-    private ItemDetailViewModel VM = new ItemDetailViewModel();
-
-    [Parameter]
-    public string Id { get; set; }
-
-    public async Task Submit()
-    {
-        var saved = await VM.Save();
-        if (saved)
-        {
-            //navigate
-            NavigationManager.NavigateTo("/presenters");
-        }
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        await base.OnInitializedAsync();
-        await VM.LoadPresenter(Id);
-        StateHasChanged();
-    }
-}
