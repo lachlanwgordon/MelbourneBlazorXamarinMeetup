@@ -58,6 +58,12 @@
     <PackageReference Include="Xamarin.Forms.Visual.Material">
       <Version>4.6.0.800</Version>
     </PackageReference>
+    <PackageReference Include="Refractored.MvvmHelpers">
+      <Version>1.6.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
+      <Version>3.1.5</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -91,9 +97,13 @@
     <AndroidResource Include="Resources\drawable\tab_feed.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MelbourneModernApps\MelbourneModernApps.csproj">
+    <ProjectReference Include="..\MelbourneModernApps\MelbourneModernApps.Forms.csproj">
       <Project>{BFA51BBB-9E92-415C-9303-9751873DCBC1}</Project>
       <Name>MelbourneModernApps.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MelbourneModernApp.Core\MelbourneModernApp.Core.csproj">
+      <Project>{D9C3012C-CD64-4665-9923-53C427129C5B}</Project>
+      <Name>MelbourneModernApp.Core</Name>
     </ProjectReference>
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

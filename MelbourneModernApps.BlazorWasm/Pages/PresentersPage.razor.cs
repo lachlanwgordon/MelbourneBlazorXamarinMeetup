@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Components;
 
 namespace MelbourneModernApps.BlazorWasm.Pages
 {
-    public partial class Presenters
+    public partial class PresentersPage
     {
-        public Presenters()
+        public PresentersPage()
         {
         }
         [Inject]

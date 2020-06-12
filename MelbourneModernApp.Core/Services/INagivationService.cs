@@ -8,6 +8,5 @@ namespace MelbourneModernApp.Core.Services
     {
         Task NavigateToPageAsync(string url);
         Task NavigateToPageAsync(string url, string parameterKey, string parameterValue);
-        Task NavigateToPageAsync(string url, Dictionary<string, string> parameters);
     }
 }

@@ -17,10 +17,5 @@ namespace MelbourneModernApps.Forms.Services
         {
             await Shell.Current.GoToAsync($"/{url}?{parameterKey}={parameterValue}");
         }
-
-        public Task NavigateToPageAsync(string url, Dictionary<string, string> parameters)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

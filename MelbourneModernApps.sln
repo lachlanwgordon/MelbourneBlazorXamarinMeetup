@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelbourneModernApp.Core", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelbourneModernApps.BlazorWasm", "MelbourneModernApps.BlazorWasm\MelbourneModernApps.BlazorWasm.csproj", "{1FC50124-2743-4E36-8CED-4CC38662D0C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelbourneModenApps.Functions", "MelbourneModenApps.Functions\MelbourneModenApps.Functions.csproj", "{59782851-967D-4EF1-BE66-8C32F49CB814}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,17 +81,5 @@ Global
 		{1FC50124-2743-4E36-8CED-4CC38662D0C1}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{1FC50124-2743-4E36-8CED-4CC38662D0C1}.Release|iPhone.ActiveCfg = Release|Any CPU
 		{1FC50124-2743-4E36-8CED-4CC38662D0C1}.Release|iPhone.Build.0 = Release|Any CPU
-		{59782851-967D-4EF1-BE66-8C32F49CB814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59782851-967D-4EF1-BE66-8C32F49CB814}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59782851-967D-4EF1-BE66-8C32F49CB814}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59782851-967D-4EF1-BE66-8C32F49CB814}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59782851-967D-4EF1-BE66-8C32F49CB814}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{59782851-967D-4EF1-BE66-8C32F49CB814}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{59782851-967D-4EF1-BE66-8C32F49CB814}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{59782851-967D-4EF1-BE66-8C32F49CB814}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{59782851-967D-4EF1-BE66-8C32F49CB814}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{59782851-967D-4EF1-BE66-8C32F49CB814}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{59782851-967D-4EF1-BE66-8C32F49CB814}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{59782851-967D-4EF1-BE66-8C32F49CB814}.Release|iPhone.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

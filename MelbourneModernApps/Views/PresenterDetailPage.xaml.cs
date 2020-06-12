@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 
 namespace MelbourneModernApps.Views
 {
-    [QueryProperty("presenter", "presenter")]
+    [QueryProperty(nameof(presenter), nameof(presenter))]
     public partial class PresenterDetailPage : ContentPage
     {
         public string presenter { get; set; }

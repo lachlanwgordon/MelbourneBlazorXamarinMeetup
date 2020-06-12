@@ -18,7 +18,6 @@ namespace MelbourneModernApps.BlazorWasm.Services
 
         public Task NavigateToPageAsync(string url)
         {
-            Debug.WriteLine($"Navigate to /{url} ");
             NavigationManager.NavigateTo($"/{url}");
             return Task.CompletedTask;
         }
