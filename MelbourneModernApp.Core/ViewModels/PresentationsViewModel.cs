@@ -12,7 +12,7 @@ namespace MelbourneModernApp.Core.ViewModels
 {
     public class PresentationsViewModel : MvvmHelpers.BaseViewModel
     {
-        public ObservableRangeCollection<Presentation> Presentations = new ObservableRangeCollection<Presentation>();
+        public ObservableRangeCollection<Presentation> Presentations { get; set; } = new ObservableRangeCollection<Presentation>();
         public ICommand LoadItemsCommand => new AsyncCommand<string>(LoadItemsAsync);
 
         public PresentationDataStore DataStore = new PresentationDataStore();
@@ -42,7 +42,7 @@ namespace MelbourneModernApp.Core.ViewModels
                 if (presenterId != null)
                     items = items.Where(x => x.PresenterId == presenterId);
 
-
+                Debug.WriteLine($"{items.Count()} presentations loaded");
                 Presentations.AddRange(items);
                 OnPropertyChanged(nameof(Presentations));
             }

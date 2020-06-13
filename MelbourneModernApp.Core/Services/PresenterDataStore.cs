@@ -68,5 +68,6 @@ namespace MelbourneModernApp.Core.Services
             var sortedItems = items.OrderBy(x => x.Name);
             return await Task.FromResult(sortedItems);
         }
+
     }
 }

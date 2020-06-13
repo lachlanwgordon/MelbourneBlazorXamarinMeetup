@@ -4,31 +4,39 @@
     x:Class="MelbourneModernApps.Views.PresentationsPage"
     xmlns:viewModels="clr-namespace:MelbourneModernApp.Core.ViewModels;assembly=MelbourneModernApp.Core"
     xmlns:controls="clr-namespace:MelbourneModernApps.Controls">
-    
-    <ContentPage.Content>
 
-        <RefreshView
-            IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
-            Command="{Binding LoadItemsCommand}">
-            <CollectionView
-                Margin="10"
-                x:Name="ItemsCollectionView"
-                ItemsSource="{Binding Presentations}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout
-                        Orientation="Vertical"
-                        ItemSpacing="20" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <controls:CardLayout
-                                Clicked="OnItemSelected" />
-                           
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </RefreshView>
+    <ContentPage.Content>
+        <Grid
+            BackgroundColor="Aqua"
+            >
+
+            <RefreshView
+                BackgroundColor="Bisque"
+                IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+                Command="{Binding LoadItemsCommand}">
+                <CollectionView
+                    BackgroundColor="BlueViolet"
+                    Margin="10"
+                    x:Name="ItemsCollectionView"
+                    ItemsSource="{Binding Presentations}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                            Orientation="Vertical"
+                            ItemSpacing="20" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                BackgroundColor="Red">
+                                <controls:CardLayout
+                                    Clicked="OnItemSelected" />
+
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>

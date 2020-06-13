@@ -59,12 +59,12 @@
             <ShellContent
                 ContentTemplate="{DataTemplate local:PresentersPage}" />
         </Tab>
-        <!--<Tab
+        <Tab
             Title="Presentations"
             Icon="tab_feed.png">
             <ShellContent
                 ContentTemplate="{DataTemplate local:PresentationsPage}" />
-        </Tab>-->
+        </Tab>
         <Tab
             Title="About"
             Icon="tab_about.png">

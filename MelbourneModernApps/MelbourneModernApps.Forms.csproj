@@ -21,4 +21,7 @@
     <Folder Include="Controls\" />
     <Folder Include="Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="**/*" />
+  </ItemGroup>
 </Project>
