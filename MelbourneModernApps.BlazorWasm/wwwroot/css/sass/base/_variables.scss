@@ -1,0 +1,41 @@
+﻿// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+// COLORS
+// Brand
+$brand-light-green: #1b6e29;
+$brand-light-blue: #2596df;
+$brand-red: #FF3B30;
+$brand-orange: #FFB72E;
+$brand-black: #1C1C1C;
+$brand-very-dark-grey: #707070;
+$brand-dark-grey: #95989A;
+$brand-light-grey: #B5B5B5;
+$brand-very-light-grey: #D8D8D8;
+$brand-screen-background: #EDEDED;
+$brand-white: #FFFFFF;
+
+
+//Updated colors
+$brand-color: yellow;
+$brand-color-secondary: $brand-light-blue;
+$brand-color-dark: $brand-color;
+$brand-color-light: $brand-color-secondary;
+$brand-color-button: $brand-color-secondary;
+$brand-error-color: $brand-red;
+$brand-color-grey: rgba(0,0,0,0.38);
+
+// SCREENS
+$smallScreen: "max-width: 768px";
+$largeScreen: "min-width: 768px";
+
+//fontsize
+$extraExtraSmallFontSize: 10px;
+$extraSmallFontSize: 12px;
+$smallFontSize: 14px;
+$mediumFontSize: 16px;
+$largeFontSize: 18px;
+$extraLargeFontSize: 20px;
+
+$fa-font-path: "../../../webfonts";

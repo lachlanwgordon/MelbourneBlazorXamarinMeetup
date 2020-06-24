@@ -31,7 +31,7 @@
         <MatTextField id="name" FullWidth="true" Label="Blog" @bind-Value="@VM.BlogUrl" />
     </div>
     <div class="center">
-        <img src="@VM.ImageUrl" class="circle-image" />
+        <CustomImage @bind-Source="@VM.Presenter.ImageUrl" Circle="true"/>
     </div>
 
     <div class="center">

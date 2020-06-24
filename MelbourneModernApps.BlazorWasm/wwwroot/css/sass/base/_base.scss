@@ -1,0 +1,94 @@
+@use '../base/_variables';
+
+p {
+    margin-bottom: 0px;
+}
+
+.headerStyle {
+    color: $brand-very-dark-grey;
+    font-weight: bold;
+    font-size: $extraExtraSmallFontSize;
+}
+
+.smallTableHeading {
+    font-size: $extraSmallFontSize;
+    color: $brand-light-blue;
+}
+
+.brandLightBlue {
+    color: $brand-light-blue;
+}
+
+.brandVeryDarkGrey {
+    color: $brand-very-dark-grey;
+}
+
+
+.brandGreenBG {
+    background-color: $brand-light-green;
+}
+
+.growContainer {
+    background-color: $brand-white;
+    display: flex;
+    flex-grow: 1;
+}
+
+.field-error-message {
+    font-size: smaller;
+    color: red;
+    margin-left: 8px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
+
+//Base widths
+
+@media (min-width: 506.01px) {
+    .width25 {
+        width: 25%;
+    }
+
+    .width50 {
+        width: 50%;
+    }
+
+    .width75 {
+        width: 75%;
+    }
+
+    .width100 {
+        width: 100%;
+    }
+}
+
+@media (max-width: 506px) {
+    .width25, .width50, .width75, .width100 {
+        width: 100%;
+    }
+}
+
+// List Tables
+
+.itemListTable {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+    background-color: $brand-white;
+    margin-bottom: 0px;
+
+    td {
+        vertical-align: middle;
+        font-size: $smallFontSize;
+        padding: 0.25rem;
+        border-top: 1px solid $brand-very-light-grey;
+    }
+
+    th {
+        padding: 0.75rem 0.25rem;
+        border-bottom: 1px solid $brand-very-light-grey;
+        border-top: none;
+        font-size: $extraSmallFontSize;
+    }
+}

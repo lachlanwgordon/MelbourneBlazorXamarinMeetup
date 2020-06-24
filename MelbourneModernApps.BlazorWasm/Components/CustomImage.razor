@@ -1,0 +1,12 @@
+﻿
+<img src="@Source" class="@(Circle ? "circle-image" : "")" />
+
+@code {
+
+    [Parameter]
+    public string Source { get; set; }
+
+    [Parameter]
+    public bool Circle { get; set; }
+
+}

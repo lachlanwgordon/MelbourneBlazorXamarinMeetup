@@ -15,7 +15,7 @@ else
 {
     <table class="table">
         <thead>
-            <tr>
+            <tr class="presenter-table-header">
                 <th>Picture</th>
                 <th>Name</th>
                 <th>Blurb</th>
@@ -27,7 +27,10 @@ else
             @foreach (var presenter in VM.Items)
             {
                 <tr>
-                    <td><img src="@presenter.ImageUrl" class="circle-image" /></td>
+                    <td>
+                        <CustomImage Source="@presenter.ImageUrl" Circle="true">
+                        </CustomImage>
+                    </td>
                     <td>@presenter.Name</td>
                     <td>@presenter.Description</td>
                     <td>@presenter.TwitterHandle</td>

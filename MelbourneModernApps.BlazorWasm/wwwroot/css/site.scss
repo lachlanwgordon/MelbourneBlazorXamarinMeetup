@@ -1,0 +1,56 @@
+﻿@charset 'UTF-8';
+
+// 1. Vendors
+@import
+    '../open-iconic/font/css/open-iconic-bootstrap.min.css',
+    '../bootstrap/bootstrap.min.css',
+    'oldsite.css';
+    //'sass/vendors/font-awesome/solid.scss',
+    //'sass/vendors/font-awesome/regular.scss';
+
+// 2. Base stuff
+@import
+    'sass/base/variables',
+    'sass/base/functions',
+   // 'sass/base/mixins',
+    'sass/base/base';
+   // 'sass/base/fonts',
+   // 'sass/base/typography',
+   // 'sass/base/helpers',
+   // 'sass/base/overrides';
+ 
+// 3. Components
+@import
+    'sass/components/custom-image';
+   /* 'sass/components/error',
+    'sass/components/filter-panel',
+    'sass/components/vertical-container',
+    'sass/components/table',
+    'sass/components/action-bar',
+    'sass/components/sidebar-container',
+    'sass/components/tab-bar',
+    'sass/components/panel-section',
+    'sass/components/single-row-container',
+    'sass/components/double-row-container',
+    'sass/components/task-list',
+    'sass/components/card',
+    'sass/components/equally-spaced-container',
+    'sass/components/search-bar',
+    'sass/components/crudpage',
+    'sass/components/help-text',
+    'sass/components/modalpage';*/
+
+// 4. Page-specific styles
+@import
+   // 'sass/pages/main-layout', 
+   // 'sass/pages/contact-page-layout',
+   //'sass/pages/app',
+   // 'sass/pages/home',
+   // 'sass/pages/loginpage',
+   // 'sass/pages/client-page-layout',
+    'sass/pages/presenters-page';
+
+// 5. Themes
+//@import
+   // 'sass/themes/default';
+
