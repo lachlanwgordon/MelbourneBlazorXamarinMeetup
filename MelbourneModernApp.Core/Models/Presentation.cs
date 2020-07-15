@@ -13,5 +13,7 @@ namespace MelbourneModernApp.Core.Models
         public string RepoUrl { get; set; }
         public string VideoUrl { get; set; }
         public DateTime Date { get; set; }
+        public Presenter Presenter { get; set; }
+
     }
 }

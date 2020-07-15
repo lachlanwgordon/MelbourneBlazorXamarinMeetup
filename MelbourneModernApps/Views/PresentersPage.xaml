@@ -31,6 +31,8 @@
                 <DataTemplate>
                     <Grid>
                         <controls:CardLayout
+                            Title="{Binding Name}"
+                            ImageUrl="{Binding ImageUrl}"
                             Clicked="OnItemSelected" />
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer

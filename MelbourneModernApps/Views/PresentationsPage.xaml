@@ -6,16 +6,15 @@
     xmlns:controls="clr-namespace:MelbourneModernApps.Controls">
 
     <ContentPage.Content>
-        <Grid
-            BackgroundColor="Aqua"
-            >
-
+        <Grid>
+            <!--<MediaElement
+                    Grid.RowSpan="2"
+                    ShowsPlaybackControls="True"
+                    Source="https://sec.ch9.ms/ch9/5a1c/b70989c3-7875-45e5-9181-13523b845a1c/ColorConverters_mid.mp4" />-->
             <RefreshView
-                BackgroundColor="Bisque"
                 IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
                 Command="{Binding LoadItemsCommand}">
                 <CollectionView
-                    BackgroundColor="BlueViolet"
                     Margin="10"
                     x:Name="ItemsCollectionView"
                     ItemsSource="{Binding Presentations}">
@@ -27,8 +26,10 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid
-                                BackgroundColor="Red">
+                                >
                                 <controls:CardLayout
+                                    Title="{Binding Name}"
+                                    ImageUrl="{Binding Presenter.ImageUrl}"
                                     Clicked="OnItemSelected" />
 
                             </Grid>

@@ -30,6 +30,14 @@ namespace MelbourneModernApps
 
             Container.Current.Services = serviceProvider;
 
+            Device.SetFlags(new string[]
+            {
+                "Expander_Experimental",
+                "AppThese_Experimental",
+                "MediaElement_Experimental",
+                "SwipeView_Experimental"
+            });
+
             MainPage = new AppShell();
         }
 

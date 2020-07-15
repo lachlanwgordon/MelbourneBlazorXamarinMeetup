@@ -9,6 +9,8 @@
     xmlns:converters="clr-namespace:MelbourneModernApps.Converters">
     <Application.Resources>
         <ResourceDictionary>
+            <Color x:Key="PageBackground">White</Color>
+
             <Style
                 TargetType="Editor">
                 <Setter
@@ -26,8 +28,7 @@
             </Style>
             <converters:NullStringToVisibleConverter
                 x:Key="nullStringToVisibleConverter" />
-            <Color
-                x:Key="PageBackground">#F5F4F9</Color>
+            
             <Style
                 TargetType="ContentPage">
                 <Setter

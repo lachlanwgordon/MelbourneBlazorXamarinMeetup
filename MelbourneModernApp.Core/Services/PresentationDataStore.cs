@@ -21,7 +21,16 @@ namespace MelbourneModernApp.Core.Services
                 return;
             var newitems = new List<Presentation>()
             {
-                new Presentation { Id = Guid.NewGuid().ToString(), Name = "Blazor for Xamarin forms Developers", Date = new DateTime(2020,04,15), PresenterId = "9cb75bed-d7db-4a58-a3a0-e6523668061d", RepoUrl = "https://github.com/lachlanwgordon/MelbourneModernApps", VideoUrl="https://www.youtube.com/embed/pz8lEAb_Qes" },
+                new Presentation
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = "Blazor for Xamarin forms Developers",
+                    Date = new DateTime(2020,04,15),
+                    PresenterId = "9cb75bed-d7db-4a58-a3a0-e6523668061d",
+                    RepoUrl = "https://github.com/lachlanwgordon/MelbourneModernApps",
+                    VideoUrl="https://www.youtube.com/embed/pz8lEAb_Qes",
+                    Presenter = PresenterDataStore.Lachlan
+                },
                 new Presentation { Id = Guid.NewGuid().ToString(), Name = "App Center changed my life", Date = new DateTime(2020,04,15), PresenterId = "9cb75bed-d7db-4a58-a3a0-e6523668061d", RepoUrl = "https://github.com/lachlanwgordon/MelbourneModernApps", VideoUrl="https://www.youtube.com/embed/pz8lEAb_Qes" }
             };
             items.AddRange(newitems);

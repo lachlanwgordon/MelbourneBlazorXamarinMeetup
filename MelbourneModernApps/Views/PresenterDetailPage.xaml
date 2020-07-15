@@ -10,7 +10,7 @@
     xmlns:vm="clr-namespace:MelbourneModernApp.Core.ViewModels;assembly=MelbourneModernApp.Core"
     x:Class="MelbourneModernApps.Views.PresenterDetailPage"
     Title="{Binding Title}">
-
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem
             Text="Save"
