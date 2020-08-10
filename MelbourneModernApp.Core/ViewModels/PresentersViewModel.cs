@@ -45,7 +45,7 @@ namespace MelbourneModernApp.Core.ViewModels
             }
             else
             {
-                await NavigationService.NavigateToPageAsync($"presenters/detail", "presenter", presenter.Id);
+                await NavigationService.NavigateToPageAsync($"presenters", "presenter", presenter.Id);
             }
         }
     }

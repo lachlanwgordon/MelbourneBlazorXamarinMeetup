@@ -1,0 +1,41 @@
+@using MelbourneModernApp.Core.ViewModels
+
+@inject PresentersViewModel VM
+<ContentPage>
+    <ScrollView>
+        <StackLayout>
+            @foreach (var presenter in VM.Items)
+            {
+                <Frame Margin="10">
+                    <Grid RowDefinitions="Auto, Auto, *, Auto, Auto, *">
+
+                        <GridCell RowSpan="4">
+                <Frame Padding="0"
+                       CornerRadius="50"
+                       HeightRequest="100"
+                       WidthRequest="100">
+                    <Image Source="@presenter.ImageUrl"></Image>
+                </Frame>
+                </GridCell>
+                <GridCell Column="1">
+                    <Label Text="@presenter.Name"></Label>
+                </GridCell>
+                <GridCell Column="1" Row="1">
+                    <Label Text="@presenter.Description"></Label>
+                </GridCell>
+                <GridCell Column="1" Row="3">
+                    <Label Text="@presenter.TwitterHandle"></Label>
+                </GridCell>
+                <GridCell RowSpan="4" ColumnSpan="2">
+                    <Button Text=" " OnClick="@(() => VM.OpenPresenter(presenter))" BackgroundColor="Color.Transparent"></Button>
+                </GridCell>
+                </Grid>
+                </Frame>
+            }
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
+@code {
+
+}

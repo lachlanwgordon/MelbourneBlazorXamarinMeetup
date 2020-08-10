@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <RazorLangVersion>3.0</RazorLangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1142" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.0" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.7.0.1142" />
+    <PackageReference Include="Microsoft.MobileBlazorBindings" Version="0.5.15-preview" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MelbourneModernApp.Core\MelbourneModernApp.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Pages\PresentersPage.razor.cs">
+      <DependentUpon>Pages\PresentersPage.razor</DependentUpon>
+    </Compile>
+    <Compile Update="AppShell.razor.cs">
+      <DependentUpon>AppShell.razor</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\AboutPage.razor.cs">
+      <DependentUpon>Pages\AboutPage.razor</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\PresenterDetailPage.razor.cs">
+      <DependentUpon>Pages\PresenterDetailPage.razor</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\NavigationView.razor.cs">
+      <DependentUpon>Pages\NavigationView.razor</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\NavView.razor.cs">
+      <DependentUpon>Pages\NavView.razor</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

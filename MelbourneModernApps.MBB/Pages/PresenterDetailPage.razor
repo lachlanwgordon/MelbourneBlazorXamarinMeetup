@@ -1,0 +1,31 @@
+@using MelbourneModernApp.Core.ViewModels
+@page "/presenterdetails/{Id}"
+
+<ContentView>
+
+    @if (VM == null || VM.Item == null)
+    {
+        <Label Text="Loading"></Label>
+    }
+    else
+    {
+        <StackLayout Padding="10">
+            <Entry Placeholder="Image URL" Text="@VM.Item.ImageUrl"></Entry>
+            <Entry Placeholder="Github URL" Text="@VM.Item.GithubUrl"></Entry>
+            <Entry Placeholder="Twitter" Text="@VM.Item.TwitterHandle"></Entry>
+            <Entry Placeholder="Youtube" Text="@VM.Item.YoutubeUrl"></Entry>
+            <Entry Placeholder="Blog" Text="@VM.Item.BlogUrl"></Entry>
+            <Frame @ref="PictureFrame"
+                   Padding="0"
+                   WidthRequest="200"
+                   HeightRequest="200"
+                   CornerRadius="100">
+                <Image @ref="Picture" Source="@VM.Item.ImageUrl"></Image>
+            </Frame>
+        </StackLayout>
+    }
+
+</ContentView>
+
+
+
