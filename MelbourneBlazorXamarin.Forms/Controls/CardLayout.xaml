@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Frame
+    Visual="Material"
+    Padding="10"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MelbourneBlazorXamarin.Controls.CardLayout"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+    <Grid
+        Padding="0"
+        Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="Auto" />
+            <ColumnDefinition
+                Width="*" />
+        </Grid.ColumnDefinitions>
+        <Frame
+            Visual="Material"
+            Padding="0"
+            Margin="0"
+            VerticalOptions="Start"
+            Grid.RowSpan="3"
+            WidthRequest="100"
+            HeightRequest="100"
+            CornerRadius="50">
+            <Image
+                Source="{Binding ImageUrl}" />
+        </Frame>
+        <Label
+            Grid.Column="1"
+            Text="{Binding Name}"
+            LineBreakMode="NoWrap"
+            Style="{DynamicResource ListItemTextStyle}"
+            FontSize="16" />
+        <Label
+            Grid.Column="1"
+            Grid.Row="1"
+            Text="{Binding Description}"
+            LineBreakMode="NoWrap"
+            Style="{DynamicResource ListItemDetailTextStyle}"
+            FontSize="13" />
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="{Binding TwitterHandle}" />
+        
+    </Grid>
+</Frame>

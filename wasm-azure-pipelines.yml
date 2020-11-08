@@ -32,7 +32,7 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: false
-    projects: 'MelbourneModernApps.BlazorWasm/MelbourneModernApps.BlazorWasm.csproj'
+    projects: 'MelbourneBlazorXamarin.BlazorWasm/MelbourneBlazorXamarin.BlazorWasm.csproj'
     arguments: '--configuration $(buildConfiguration) -o ./publish'
     zipAfterPublish: false
 
@@ -42,7 +42,7 @@ steps:
 
 - task: AzureFileCopy@3
   inputs:
-    SourcePath: 'publish/MelbourneModernApps.BlazorWasm/wwwroot'
+    SourcePath: 'publish/MelbourneBlazorXamarin.BlazorWasm/wwwroot'
     azureSubscription: 'Pay-As-You-Go(951a84dd-fbb0-4ba0-bc31-4865ee7f4df3)'
     Destination: 'AzureBlob'
     storage: 'melbournexamarinblazor'
