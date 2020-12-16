@@ -37,7 +37,7 @@ jobs:
 
     - name: MSBuild Restore/Build
       shell: pwsh
-      run: msbuild /t:restore,build /maxcpucount /verbosity:minimal /p:Configuration=$$env:Configuration MelbourneBlazorXamarin.sln
+      run: msbuild /t:restore,build /maxcpucount /verbosity:minimal /p:Configuration=$env:Configuration /p:Platform="Any CPU" MelbourneBlazorXamarin.sln
       env:
         Configuration: ${{ matrix.configuration }}
         
