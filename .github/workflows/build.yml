@@ -1,0 +1,45 @@
+name: Build Demo
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-demo:
+    strategy:
+      matrix: 
+        configuration: [Debug, Release]
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Check out
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        lfs: true
+
+    - name: Install .NET Core 3.1.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
+
+    - name: Install .NET Core 5.0.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+
+    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: MSBuild Restore/Build
+      shell: pwsh
+      run: msbuild /t:restore,build /maxcpucount /verbosity:minimal /p:Configuration=$env:Configuration /p:Platform="Any CPU" MelbourneBlazorXamarin.sln
+      env:
+        Configuration: ${{ matrix.configuration }}
+        
+
+    
