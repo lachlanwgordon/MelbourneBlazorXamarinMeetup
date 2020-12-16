@@ -22,12 +22,12 @@ jobs:
         lfs: true
 
     - name: Install .NET Core 3.1.x
-      uses: action/setup-dotnet@v1
+      uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
 
     - name: Install .NET Core 5.0.x
-      uses: action/setup-dotnet@v1
+      uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
 
