@@ -26,7 +26,7 @@ namespace MelbourneBlazorXamarin.iOS
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             Xamarin.Forms.FormsMaterial.Init();
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            LoadApplication(new MBBApp());
 
             return base.FinishedLaunching(app, options);
         }
