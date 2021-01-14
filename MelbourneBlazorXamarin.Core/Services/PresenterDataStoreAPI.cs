@@ -27,7 +27,7 @@ namespace MelbourneBlazorXamarin.Core.Services
 
         public async Task<Presenter> GetItemAsync(string id)
         {
-            var baseUrl = "http://localhost:7071/api";
+            var baseUrl = "/api";
             var url = $"{baseUrl}/{nameof(Presenter)}?id={id}";
             var item = await httpClient.GetFromJsonAsync<Presenter>(url);
             return item;
