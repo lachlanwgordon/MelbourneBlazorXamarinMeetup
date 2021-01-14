@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using MelbourneBlazorXamarin.Core.Models;
 using System.Net.Http.Json;
+using System.Diagnostics;
 
 namespace MelbourneBlazorXamarin.Core.Services
 {
@@ -35,11 +36,21 @@ namespace MelbourneBlazorXamarin.Core.Services
 
         public async Task<IEnumerable<Presenter>> GetItemsAsync(bool forceRefresh = false)
         {
-            var baseUrl = "/api";
-            //var baseUrl = "http://localhost:7071/api";
-            var url = $"{baseUrl}/{nameof(Presenter)}";
-            var items = await httpClient.GetFromJsonAsync<List<Presenter>>(url);
-            return items;
+            try
+            {
+                var baseUrl = "api";
+                Debug.WriteLine(baseUrl);
+                //var baseUrl = "http://localhost:7071/api";
+                var url = $"{baseUrl}/{nameof(Presenter)}";
+                Debug.WriteLine(url);
+                var items = await httpClient.GetFromJsonAsync<List<Presenter>>(url);
+                return items;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return new List<Presenter>();
+            }
         }
 
         public Task<bool> UpdateItemAsync(Presenter item)
