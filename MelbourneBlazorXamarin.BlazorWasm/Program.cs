@@ -8,6 +8,7 @@ using MelbourneBlazorXamarin.Core.Services;
 using MelbourneBlazorXamarin.Core.Models;
 using MelbourneBlazorXamarin.Core.ViewModels;
 using MelbourneBlazorXamarin.BlazorWasm.Services;
+using System.Net.Http;
 
 namespace MelbourneBlazorXamarin.BlazorWasm
 {
@@ -18,8 +19,12 @@ namespace MelbourneBlazorXamarin.BlazorWasm
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddBaseAddressHttpClient();
-            builder.Services.AddSingleton<IDataStore<Presenter>, PresenterDataStore>();
+
+
+            //builder.Services.AddBaseAddressHttpClient();
+            builder.Services.AddSingleton(_ => new HttpClient());
+
+            builder.Services.AddSingleton<IDataStore<Presenter>, PresenterDataStoreAPI>();
             builder.Services.AddTransient<PresentersViewModel>();
             builder.Services.AddTransient<PresenterDetailViewModel>();
             builder.Services.AddTransient<INavigationService, NavigationService>();
