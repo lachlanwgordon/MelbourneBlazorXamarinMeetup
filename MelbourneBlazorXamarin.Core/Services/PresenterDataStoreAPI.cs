@@ -49,7 +49,7 @@ namespace MelbourneBlazorXamarin.Core.Services
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex);
+                Console.WriteLine(ex);
                 return new List<Presenter>();
             }
         }
