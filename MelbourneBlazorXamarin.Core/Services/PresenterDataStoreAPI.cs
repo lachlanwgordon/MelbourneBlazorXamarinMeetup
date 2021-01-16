@@ -38,11 +38,12 @@ namespace MelbourneBlazorXamarin.Core.Services
         {
             try
             {
-                var baseUrl = "api";
+                var baseUrl = "/api";
                 Debug.WriteLine(baseUrl);
+                Console.WriteLine(baseUrl);
                 //var baseUrl = "http://localhost:7071/api";
                 var url = $"{baseUrl}/{nameof(Presenter)}";
-                Debug.WriteLine(url);
+                Console.WriteLine(url);
                 var items = await httpClient.GetFromJsonAsync<List<Presenter>>(url);
                 return items;
             }
