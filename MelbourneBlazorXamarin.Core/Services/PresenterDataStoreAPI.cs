@@ -44,12 +44,14 @@ namespace MelbourneBlazorXamarin.Core.Services
                 //var baseUrl = "http://localhost:7071/api";
                 var url = $"{baseUrl}/{nameof(Presenter)}";
                 Console.WriteLine(url);
+                Console.WriteLine(httpClient.BaseAddress);
                 var items = await httpClient.GetFromJsonAsync<List<Presenter>>(url);
                 return items;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+                Console.WriteLine(httpClient.BaseAddress);
                 return new List<Presenter>();
             }
         }
