@@ -11,9 +11,21 @@ namespace MelbourneBlazorXamarin.Core.Services
     public class PresenterDataStoreAPI : IDataStore<Presenter>
     {
         readonly HttpClient httpClient;
-        public PresenterDataStoreAPI(HttpClient httpClient)
+        //readonly IHttpContextAccessor httpContextAccessor;
+#if DEBUG
+
+        string BaseUrl = "https://witty-smoke-0230db31e.azurestaticapps.net/api";
+        //string BaseUrl = "http://localhost:7071/api";
+#else
+        string BaseUrl = "https://witty-smoke-0230db31e.azurestaticapps.net/api";
+
+#endif
+
+
+        public PresenterDataStoreAPI(HttpClient httpClient)//, IHttpContextAccessor httpContextAccessor)
         {
             this.httpClient = httpClient;
+            //this.httpContextAccessor = httpContextAccessor;
         }
 
         public Task<bool> AddItemAsync(Presenter item)
@@ -28,7 +40,7 @@ namespace MelbourneBlazorXamarin.Core.Services
 
         public async Task<Presenter> GetItemAsync(string id)
         {
-            var baseUrl = "/api";
+            var baseUrl = BaseUrl;
             var url = $"{baseUrl}/{nameof(Presenter)}?id={id}";
             var item = await httpClient.GetFromJsonAsync<Presenter>(url);
             return item;
@@ -38,7 +50,7 @@ namespace MelbourneBlazorXamarin.Core.Services
         {
             try
             {
-                var baseUrl = "/api";
+                var baseUrl = BaseUrl;
                 Debug.WriteLine(baseUrl);
                 Console.WriteLine(baseUrl);
                 //var baseUrl = "http://localhost:7071/api";

@@ -9,6 +9,8 @@ using MelbourneBlazorXamarin.Core.Models;
 using MelbourneBlazorXamarin.Core.ViewModels;
 using MelbourneBlazorXamarin.BlazorWasm.Services;
 using System.Net.Http;
+using Microsoft.AspNetCore.Http;
+
 
 namespace MelbourneBlazorXamarin.BlazorWasm
 {
@@ -28,10 +30,18 @@ namespace MelbourneBlazorXamarin.BlazorWasm
             builder.Services.AddTransient<PresentersViewModel>();
             builder.Services.AddTransient<PresenterDetailViewModel>();
             builder.Services.AddTransient<INavigationService, NavigationService>();
-
             var host = builder.Build();
             Container.Current.Services = host.Services;
-
+            //Console.WriteLine("Looking for base address");
+            //var context = host.Services.GetRequiredService<IHttpContextAccessor>();
+            //var manager = 
+            //Console.WriteLine(context);
+            //var url = context.HttpContext.Request.PathBase;
+            //Console.WriteLine(url);
+            //var client = host.Services.GetRequiredService<HttpClient>();
+            //Console.WriteLine(client);
+            //client.BaseAddress = new Uri(url);
+            //Console.WriteLine(client.BaseAddress);
             await host.RunAsync();
         }
     }
