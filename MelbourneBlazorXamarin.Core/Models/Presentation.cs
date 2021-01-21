@@ -1,14 +1,12 @@
 ﻿using System;
 namespace MelbourneBlazorXamarin.Core.Models
 {
-    public class Presentation
+    public class Presentation : BaseModel
     {
         public Presentation()
         {
         }
 
-        public string Id { get; set; }
-        public string Name { get; set; }
         public string PresenterId { get; set; }
         public string RepoUrl { get; set; }
         public string VideoUrl { get; set; }

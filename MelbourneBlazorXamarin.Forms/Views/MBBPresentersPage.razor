@@ -4,15 +4,12 @@
 @using Xamarin.Forms
 @using MelbourneBlazorXamarin.Core.ViewModels
 
-@page "/presenters"
 
-<ContentView>
+<ContentPage>
+    <ScrollView>
 
-    <StackLayout Orientation="StackOrientation.Horizontal" >
+    <StackLayout BackgroundColor="Color.Green"  >
 
-        <Label Text="Presenters"></Label>
-
-        <Label Text="Presenters and Melbourne Meetup."></Label>
 
         @if (VM.Items == null || VM.Items.Count == 0)
         {
@@ -20,24 +17,19 @@
         }
         else
         {
-            <Grid>
-                <GridCell><Label Text="Picture"></Label></GridCell>
-                <GridCell><Label Text="Name" /></GridCell>
-                <GridCell><Label Text="Blurb" /></GridCell>
-                <GridCell><Label Text="Twitter" /></GridCell>
-                <GridCell></GridCell>
-            </Grid>
+           
             @foreach (var presenter in VM.Items)
             {
-                <Grid>
-                    <GridCell><img src="@presenter.ImageUrl" class="circle-image" /></GridCell>
-                    <GridCell>@presenter.Name</GridCell>
-                    <GridCell>@presenter.Description</GridCell>
-                    <GridCell>@presenter.TwitterHandle</GridCell>
-                    <GridCell><Button Text="edit" OnClick="@(() => VM. OpenPresenter(presenter))"></Button></GridCell>
+                <Grid BackgroundColor="Color.Blue" HeightRequest="200" Margin="5" ColumnDefinitions="*, Auto" RowDefinitions="*, *">
+                    <GridCell RowSpan="2"><Image Source="@presenter.ImageUrl" /></GridCell>
+                    <GridCell Column="1"><Label Text="@presenter.Name"></Label></GridCell>
+                    @*<GridCell>@presenter.Description</GridCell>
+                    <GridCell>@presenter.TwitterHandle</GridCell>*@
+                    <GridCell Column="1" Row="1"><Button Text="edit" OnClick="@(() => VM. OpenPresenter(presenter))"></Button></GridCell>
                 </Grid>
             }
         }
     </StackLayout>
+    </ScrollView>
 
-</ContentView>
+</ContentPage>

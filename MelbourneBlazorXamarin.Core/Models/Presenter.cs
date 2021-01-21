@@ -2,7 +2,7 @@
 
 namespace MelbourneBlazorXamarin.Core.Models
 {
-    public class Presenter
+    public class Presenter : BaseModel
     {
         public string Id { get; set; }
         public string Name { get; set; }
