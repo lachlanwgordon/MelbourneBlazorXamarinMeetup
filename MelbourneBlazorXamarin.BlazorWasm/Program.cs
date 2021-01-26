@@ -24,7 +24,8 @@ namespace MelbourneBlazorXamarin.BlazorWasm
 
 
             //builder.Services.AddBaseAddressHttpClient();
-            builder.Services.AddSingleton(_ => new HttpClient());
+            builder.Services.AddSingleton(_ => new HttpClient() { BaseAddress = new Uri(Settings.BaseUrl)});
+            //builder.Services.AddSingleton(_ => new HttpClient());
 
             builder.Services.AddSingleton<IDataStore<Presenter>, PresenterDataStoreAPI>();
             builder.Services.AddTransient<PresentersViewModel>();
