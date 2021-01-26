@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using MelbourneBlazorXamarin.Core.Models;
 
@@ -41,7 +42,7 @@ namespace MelbourneBlazorXamarin.Core.Services
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                return new List<Presenter>();
+                return new List<T>();
             }
         }
 

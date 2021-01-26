@@ -49,7 +49,6 @@ namespace MelbourneBlazorXamarin.Core.Services
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                Console.WriteLine(httpClient.BaseAddress);
                 return new List<Presenter>();
             }
         }
