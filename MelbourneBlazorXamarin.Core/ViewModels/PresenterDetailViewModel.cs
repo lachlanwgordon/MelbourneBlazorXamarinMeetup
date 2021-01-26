@@ -146,35 +146,23 @@ namespace MelbourneBlazorXamarin.Core.ViewModels
             {
                 if (Item == null)
                 {
-                    Item = new Presenter
-                    {
-                        Name = Name,
-                        Description = Description,
-                        ImageUrl = ImageUrl,
-                        TwitterHandle = TwitterHandle,
-                        GithubUrl = GithubUrl,
-                        BlogUrl = BlogUrl,
-                    };
-                    success = await DataStore.AddItemAsync(Item);
-                    if (!success)
-                        ValidationMessage = "Failed to add new item";
+                    Item = new Presenter();
                 }
-                else
-                {
-                    Item.Name = Name;
-                    Item.Description = Description;
-                    Item.ImageUrl = ImageUrl;
-                    Item.TwitterHandle = TwitterHandle;
-                    Item.GithubUrl = GithubUrl;
-                    Item.BlogUrl = BlogUrl;
-                    Item.YoutubeUrl = YoutubeUrl;
+                
+                Item.Name = Name;
+                Item.Description = Description;
+                Item.ImageUrl = ImageUrl;
+                Item.TwitterHandle = TwitterHandle;
+                Item.GithubUrl = GithubUrl;
+                Item.BlogUrl = BlogUrl;
+                Item.YoutubeUrl = YoutubeUrl;
 
-
-                    success = await DataStore.UpdateItemAsync(Item);
-                    if (!success)
-                        ValidationMessage = "Failed to update item";
-                }
+                success = await DataStore.SaveItemAsync(Item);
+                if (!success)
+                    ValidationMessage = "Failed to save item";
             }
+
+            
 
             if (valid && success)
                 await NavigationService.NavigateToPageAsync("presenters");

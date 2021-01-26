@@ -18,7 +18,7 @@ namespace MelbourneModenApps.Functions
     {
         [FunctionName(nameof(Presenter))]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", "put", Route = null)] HttpRequest req,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
@@ -82,14 +82,23 @@ namespace MelbourneModenApps.Functions
                 }
                 else
                 {
-                    var item = await dummyStore.GetItemAsync(id);
+                    //var item = await dummyStore.GetItemAsync(id);
+
+                    var query = new TableQuery<Presenter>().Where(TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, id));
+                    var items = table.ExecuteQuery(query);
+
+                    var item = items?.Count() > 0 ? items.FirstOrDefault() : null ;
+
                     return new OkObjectResult(item);
                 }
             }
             else
             {
                 var presenter = JsonConvert.DeserializeObject<MelbourneBlazorXamarin.Core.Models.Presenter>(requestBody);
-                var updated = dummyStore.UpdateItemAsync(presenter);
+                var entity = Presenter.FromModel(presenter);
+
+                var save = TableOperation.InsertOrReplace(entity);
+                table.Execute(save);
                 return new OkObjectResult(presenter);
             }
 

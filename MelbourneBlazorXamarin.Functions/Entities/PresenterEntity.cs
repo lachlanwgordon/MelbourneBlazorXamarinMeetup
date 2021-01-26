@@ -1,7 +1,6 @@
 ﻿using System;
 using MelbourneBlazorXamarin.Core.Models;
 using Microsoft.Azure.Cosmos.Table;
-//using Microsoft.Azure.Cosmos.Table;
 
 namespace MelbourneBlazorXamarin.Functions.Entities
 {
@@ -18,6 +17,9 @@ namespace MelbourneBlazorXamarin.Functions.Entities
 
         public static Presenter FromModel(Core.Models.Presenter model)
         {
+            if (model.Id == null)
+                model.Id = Guid.NewGuid().ToString();
+
             var entity = new Presenter
             {
                 BlogUrl = model.BlogUrl,
@@ -31,6 +33,7 @@ namespace MelbourneBlazorXamarin.Functions.Entities
                 TwitterHandle = model.TwitterHandle,
                 YoutubeUrl = model.YoutubeUrl
             };
+            
             return entity;
         }
     }

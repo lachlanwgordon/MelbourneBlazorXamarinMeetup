@@ -20,11 +20,6 @@ namespace MelbourneBlazorXamarin.Core.Services
             this.httpClient = httpClient;
         }
 
-        public Task<bool> AddItemAsync(Presenter item)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<bool> DeleteItemAsync(string id)
         {
             throw new NotImplementedException();
@@ -41,7 +36,10 @@ namespace MelbourneBlazorXamarin.Core.Services
         {
             try
             {
-                await Task.Delay(5000);
+#if DEBUG
+                //When debugging locally the API function takes a while to startup
+                await Task.Delay(2000);
+#endif
                 var url = $"/api/{nameof(Presenter)}";
                 var items = await httpClient.GetFromJsonAsync<List<Presenter>>(url);
                 return items;
@@ -53,9 +51,11 @@ namespace MelbourneBlazorXamarin.Core.Services
             }
         }
 
-        public Task<bool> UpdateItemAsync(Presenter item)
+        public async Task<bool> SaveItemAsync(Presenter item)
         {
-            throw new NotImplementedException();
+            var url = $"/api/{nameof(Presenter)}";
+            var success = await httpClient.PutAsJsonAsync<Presenter>(url, item);
+            return success.IsSuccessStatusCode;
         }
     }
 }

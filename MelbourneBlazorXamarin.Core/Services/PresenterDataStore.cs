@@ -34,17 +34,18 @@ namespace MelbourneBlazorXamarin.Core.Services
             items.AddRange(newitems);
         }
 
-        public async Task<bool> AddItemAsync(Presenter item)
-        {
-            items.Add(item);
+        //public async Task<bool> AddItemAsync(Presenter item)
+        //{
+        //    items.Add(item);
 
-            return await Task.FromResult(true);
-        }
+        //    return await Task.FromResult(true);
+        //}
 
-        public async Task<bool> UpdateItemAsync(Presenter item)
+        public async Task<bool> SaveItemAsync(Presenter item)
         {
             var oldItem = items.Where((Presenter arg) => arg.Id == item.Id).FirstOrDefault();
-            items.Remove(oldItem);
+            if(oldItem != null)
+                items.Remove(oldItem);
             items.Add(item);
 
             return await Task.FromResult(true);

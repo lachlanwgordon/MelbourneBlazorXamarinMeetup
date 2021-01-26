@@ -16,11 +16,6 @@ namespace MelbourneBlazorXamarin.Core.Services
             this.httpClient = httpClient;
         }
 
-        public Task<bool> AddItemAsync(T item)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<bool> DeleteItemAsync(string id)
         {
             throw new NotImplementedException();
@@ -46,7 +41,7 @@ namespace MelbourneBlazorXamarin.Core.Services
             }
         }
 
-        public Task<bool> UpdateItemAsync(T item)
+        public Task<bool> SaveItemAsync(T item)
         {
             throw new NotImplementedException();
         }

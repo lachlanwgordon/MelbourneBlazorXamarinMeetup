@@ -27,14 +27,7 @@ namespace MelbourneBlazorXamarin.Core.Services
             items.AddRange(newitems);
         }
 
-        public async Task<bool> AddItemAsync(Presentation item)
-        {
-            var oldItem = items.Where((Presentation arg) => arg.Id == item.Id).FirstOrDefault();
-            items.Remove(oldItem);
-            items.Add(item);
 
-            return await Task.FromResult(true);
-        }
 
         public async Task<bool> DeleteItemAsync(string id)
         {
@@ -55,10 +48,11 @@ namespace MelbourneBlazorXamarin.Core.Services
             return await Task.FromResult(sortedItems);
         }
 
-        public async Task<bool> UpdateItemAsync(Presentation item)
+        public async Task<bool> SaveItemAsync(Presentation item)
         {
             var oldItem = items.Where((Presentation arg) => arg.Id == item.Id).FirstOrDefault();
-            items.Remove(oldItem);
+            if(oldItem != null)
+                items.Remove(oldItem);
             items.Add(item);
 
             return await Task.FromResult(true);
